@@ -855,11 +855,13 @@ footer{padding-block:34px 50px;color:var(--muted);font-size:13.5px}
     var map = L.map(el, { scrollWheelZoom: false, zoomSnap: 0.5 });
     liveMap = map;
     map.createPane("fallback").style.zIndex = 150; // below the tile pane (200)
-    L.imageOverlay(data.fallback.src, data.fallback.bounds, { pane: "fallback" }).addTo(map);
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    var fallback = L.imageOverlay(data.fallback.src, data.fallback.bounds, { pane: "fallback" }).addTo(map);
+    var tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 18,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
+    // once live tiles arrive, drop the offline image so it can't show through tile seams
+    tiles.once("load", function () { map.removeLayer(fallback); });
     L.polyline(data.route, { color: "#d4512f", weight: 3, opacity: 0.85, dashArray: "8 8" }).addTo(map);
     var pts = [];
     data.ports.forEach(function (p) {
