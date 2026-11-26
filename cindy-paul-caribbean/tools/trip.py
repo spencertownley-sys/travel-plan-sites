@@ -2,7 +2,7 @@
 
 Source: the "2027 Caribbean Cruise" Google Sheet (tabs: Actions, EC Costs,
 EC Itinerary, St M, Maps, Ship Excur, Best EC Exc, Currency), plus ship research.
-Edit this file, then run `python3 tools/build.py` from caribbean-2027/.
+Edit this file, then run `python3 tools/build.py` from cindy-paul-caribbean/.
 If you add or move map points, also run `python3 tools/render_maps.py`.
 """
 

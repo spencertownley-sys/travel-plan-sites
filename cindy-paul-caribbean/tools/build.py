@@ -1,4 +1,4 @@
-"""Build caribbean-2027/index.html from trip.py and the rendered maps.
+"""Build cindy-paul-caribbean/index.html from trip.py and the rendered maps.
 
     python3 tools/build.py
 """
@@ -219,6 +219,32 @@ def map_block(sec, spec, title=None, blurb=None, extra=""):
             f'<div class="info" aria-live="polite"></div></div><div>{leg}{extra}</div></div></div>')
 
 
+def live_map_data():
+    """Ports, route and fallback image bounds for the zoomable itinerary map."""
+    order = []
+    for k in trip.ROUTE:
+        if k not in order:
+            order.append(k)
+    ports = []
+    for k in order:
+        name, lat, lon = trip.PORTS[k]
+        days = [{"label": short_date(d["date"]), "href": "#" + day_id(d), "n": d["cruise_day"]}
+                for d in PORT_DATES.get(k, [])]
+        ports.append({"name": name, "lat": lat, "lon": lon, "days": days,
+                      "num": "·".join(str(d["n"]) for d in days if d["n"])})
+    s, w, n, e_ = trip.MAPS["route"]["bbox"]
+    return {"ports": ports, "route": [[trip.PORTS[k][1], trip.PORTS[k][2]] for k in trip.ROUTE],
+            "fallback": {"src": "maps/route.jpg", "bounds": [[s, w], [n, e_]]}}
+
+
+def live_map_block():
+    return ('<section class="livemap"><h2>Route map</h2>'
+            '<p class="blurb">Zoom in and out with the + and − buttons, by pinching, or by scrolling after you click the map. '
+            'Tap a port to see its dates and open that day.</p>'
+            '<div id="live-map" class="lmap" role="region" aria-label="Zoomable cruise route map">'
+            '<img src="maps/route.jpg" alt="Cruise route map" class="lmap-fallback"></div></section>')
+
+
 # ---------------------------------------------------------------- views
 def view_itinerary():
     h = ['<div class="view" id="v-itinerary">']
@@ -234,6 +260,7 @@ def view_itinerary():
              f'<div><b>{len(sea)} sea days</b><span>Jan 11 and Jan 19</span></div>'
              '<div><b>2 nights</b><span>Atlanta airport</span></div>'
              '</div>')
+    h.append(live_map_block())
     groups = [("Getting there", lambda d: d["date"] <= "2027-01-08"),
               ("On the ship", lambda d: "2027-01-09" <= d["date"] <= "2027-01-22"),
               ("Heading home", lambda d: d["date"] >= "2027-01-23")]
@@ -438,6 +465,7 @@ def view_todo():
 
 # ---------------------------------------------------------------- page
 CSS = open(os.path.join(HERE, "site.css")).read()
+LEAFLET_CSS = open(os.path.join(HERE, "vendor", "leaflet.css")).read()
 JS = open(os.path.join(HERE, "site.js")).read()
 
 
@@ -445,17 +473,19 @@ def page():
     tabs = [("itinerary", "Itinerary"), ("days", "Day by day"), ("maps", "Maps"), ("ship", "The ship"), ("todo", "To do")]
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Caribbean Cruise 2027</title>
-<meta name="description" content="Exotic Caribbean In Depth on Seabourn Ovation, January 2027: itinerary, day plans, maps, ship guide and planning to-do list.">
+<title>Cindy &amp; Paul in the Caribbean</title>
+<meta name="description" content="Cindy and Paul's Exotic Caribbean In Depth cruise on Seabourn Ovation, January 2027: itinerary, day plans, maps, ship guide and planning to-do list.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-<style>{CSS}</style></head><body>
-<header><p class="eyebrow">January 7 – 24, 2027</p><h1>Caribbean Cruise 2027</h1>
-<p class="lede">Fourteen nights on Seabourn Ovation, round trip from Barbados: "Exotic Caribbean In Depth," with eleven islands, two sea days and a night in Atlanta each way.</p>
+<style>{LEAFLET_CSS}</style><style>{CSS}</style></head><body>
+<header><p class="eyebrow">January 7 – 24, 2027</p><h1>Cindy &amp; Paul in the Caribbean</h1>
+<p class="lede">Cindy and Paul's fourteen nights on Seabourn Ovation, round trip from Barbados: "Exotic Caribbean In Depth," with eleven islands, two sea days and a night in Atlanta each way.</p>
 <a class="sheet" href="{trip.SHEET_URL}">Open the planning sheet in Google Sheets</a>
 <nav class="tabs" aria-label="Sections">{"".join(f'<a href="#{k}" data-tab="{k}">{v}</a>' for k, v in tabs)}</nav></header>
 <main>{view_itinerary()}{view_days()}{view_maps()}{view_ship()}{view_todo()}</main>
 <footer>Planning draft. {e(TODAY_NOTE)}; times, prices and port details may change. Port times are the ship's local time (Atlantic, UTC−4).</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script>window.TRIP_MAP = {json.dumps(live_map_data(), ensure_ascii=False)};</script>
 <script>{JS}</script></body></html>
 """
 

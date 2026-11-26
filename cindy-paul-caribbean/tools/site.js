@@ -3,6 +3,44 @@
   document.querySelectorAll(".view").forEach(function (v) { views[v.id.slice(2)] = v; });
   var dayviews = document.querySelectorAll(".dayview");
 
+  // zoomable route map on the Itinerary tab (Leaflet + OpenStreetMap tiles; the saved route image sits underneath
+  // so the map still shows something if tiles can't load, e.g. on ship Wi-Fi)
+  var liveMap = null;
+  function initLiveMap() {
+    var el = document.getElementById("live-map");
+    var data = window.TRIP_MAP;
+    if (!el || !data || !window.L) return;
+    if (liveMap) { liveMap.invalidateSize(); return; }
+    el.innerHTML = "";
+    el.classList.add("on");
+    var map = L.map(el, { scrollWheelZoom: false, zoomSnap: 0.5 });
+    liveMap = map;
+    map.createPane("fallback").style.zIndex = 150; // below the tile pane (200)
+    L.imageOverlay(data.fallback.src, data.fallback.bounds, { pane: "fallback" }).addTo(map);
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 18,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    L.polyline(data.route, { color: "#d4512f", weight: 3, opacity: 0.85, dashArray: "8 8" }).addTo(map);
+    var pts = [];
+    data.ports.forEach(function (p) {
+      pts.push([p.lat, p.lon]);
+      var icon = L.divIcon({ className: "lm-pin", html: "<span>" + (p.num || "⚓") + "</span>", iconSize: null });
+      var m = L.marker([p.lat, p.lon], { icon: icon, title: p.name, keyboard: true }).addTo(map);
+      var box = document.createElement("div");
+      var b = document.createElement("b"); b.textContent = p.name; box.appendChild(b);
+      p.days.forEach(function (d) {
+        var a = document.createElement("a"); a.href = d.href;
+        a.textContent = d.label + (d.n ? " · cruise day " + d.n : "") + " →";
+        box.appendChild(a);
+      });
+      m.bindPopup(box);
+    });
+    map.fitBounds(pts, { padding: [24, 24] });
+    map.on("click focus", function () { map.scrollWheelZoom.enable(); });
+    map.on("mouseout", function () { map.scrollWheelZoom.disable(); });
+  }
+
   function show() {
     var h = (location.hash || "").slice(1);
     var tab = h;
@@ -15,6 +53,7 @@
       var a = document.querySelector('.tabs a[data-tab="' + k + '"]');
       if (a) { if (k === tab) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); }
     }
+    if (tab === "itinerary") initLiveMap();
     if (tab === "days") {
       dayviews.forEach(function (d) { d.hidden = d.id !== day; });
       document.querySelectorAll(".chips a").forEach(function (c) {
