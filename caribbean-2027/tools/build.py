@@ -460,7 +460,19 @@ def page():
 """
 
 
+def fragment():
+    """The same page without the document wrapper, for publishing as a claude.ai artifact."""
+    full = page()
+    head = full[full.index("<title>"):full.index("</head>")]
+    body = full[full.index("<body>") + len("<body>"):full.index("</body>")]
+    return ('<meta name="claude:viewport-fit-sides" content="cover">\n' + head + body + "\n")
+
+
 if __name__ == "__main__":
     with open(os.path.join(ROOT, "index.html"), "w") as f:
         f.write(page())
     print("wrote", os.path.join(ROOT, "index.html"))
+    if len(sys.argv) > 2 and sys.argv[1] == "--artifact":
+        with open(sys.argv[2], "w") as f:
+            f.write(fragment())
+        print("wrote", sys.argv[2])
