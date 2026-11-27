@@ -1,0 +1,428 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Cindy and Paul//Caribbean 2027//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Cindy & Paul in the Caribbean
+BEGIN:VEVENT
+UID:flight0@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART:20270107T171000Z
+DTEND:20270107T214900Z
+SUMMARY:✈ Alaska 334 Seattle → Atlanta
+DESCRIPTION:Local times: departs 9:10am PT\, lands 4:49pm ET.
+END:VEVENT
+BEGIN:VEVENT
+UID:flight1@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART:20270108T144100Z
+DTEND:20270108T192000Z
+SUMMARY:✈ Delta 1985 Atlanta → Barbados
+DESCRIPTION:Local times: departs 9:41am ET\, lands 3:20pm AST.
+END:VEVENT
+BEGIN:VEVENT
+UID:flight2@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART:20270123T203000Z
+DTEND:20270124T015000Z
+SUMMARY:✈ Delta 1984 Barbados → Atlanta
+DESCRIPTION:Local times: departs 4:30pm AST\, lands 8:50pm ET.
+END:VEVENT
+BEGIN:VEVENT
+UID:flight3@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART:20270124T120000Z
+DTEND:20270124T174100Z
+SUMMARY:✈ Alaska 348 Atlanta → Seattle
+DESCRIPTION:Local times: departs 7:00am ET\, lands 9:41am PT.
+END:VEVENT
+BEGIN:VEVENT
+UID:day-2027-01-07@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART;VALUE=DATE:20270107
+DTEND;VALUE=DATE:20270108
+SUMMARY:Seattle → Atlanta
+DESCRIPTION:Fly to Atlanta and overnight at the airport Marriott.\nTonight:
+  Atlanta Airport Marriott Gateway\nhttps://spencertownley-sys.github.io/tr
+ avel-plan-sites/cindy-paul-caribbean/#day-01-07
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-07
+END:VEVENT
+BEGIN:VEVENT
+UID:day-2027-01-08@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART;VALUE=DATE:20270108
+DTEND;VALUE=DATE:20270109
+SUMMARY:Atlanta → Barbados
+DESCRIPTION:Morning flight to Barbados\, then a beach night at the Hilton.\
+ nTonight: Hilton Barbados Resort\nhttps://spencertownley-sys.github.io/tra
+ vel-plan-sites/cindy-paul-caribbean/#day-01-08
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-08
+END:VEVENT
+BEGIN:VEVENT
+UID:day-2027-01-09@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART;VALUE=DATE:20270109
+DTEND;VALUE=DATE:20270110
+SUMMARY:Cruise day 1: Bridgetown\, Barbados
+DESCRIPTION:Morning by the water\, then board Seabourn Ovation.\nTonight: S
+ eabourn Ovation\nhttps://spencertownley-sys.github.io/travel-plan-sites/ci
+ ndy-paul-caribbean/#day-01-09
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-09
+END:VEVENT
+BEGIN:VEVENT
+UID:day-2027-01-10@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART;VALUE=DATE:20270110
+DTEND;VALUE=DATE:20270111
+SUMMARY:Cruise day 2: Castries\, St. Lucia
+DESCRIPTION:Speedboat down the coast to snorkel Anse Chastanet and swim at 
+ Sugar Beach under the Pitons.\nTonight: Seabourn Ovation\nhttps://spencert
+ ownley-sys.github.io/travel-plan-sites/cindy-paul-caribbean/#day-01-10
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-10
+END:VEVENT
+BEGIN:VEVENT
+UID:port-2027-01-10@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART:20270110T120000Z
+DTEND:20270110T220000Z
+SUMMARY:🚢 In port: Castries\, St. Lucia (all aboard 6:00pm)
+DESCRIPTION:Ashore by tender. Ship's time (Atlantic\, UTC−4).\nhttps://sp
+ encertownley-sys.github.io/travel-plan-sites/cindy-paul-caribbean/#day-01-
+ 10
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-10
+END:VEVENT
+BEGIN:VEVENT
+UID:x-2027-01-10-1@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART:20270110T123000Z
+DTEND:20270110T173000Z
+SUMMARY:⭐ Speedboat Adventure — Anse Chastanet & Sugar Beach (Spencer A
+ mbrose)
+DESCRIPTION:About 1 hour by boat each way\, plus a ~15-minute trail to the 
+ snorkel spot at Anse Chastanet.\nhttps://spencertownley-sys.github.io/trav
+ el-plan-sites/cindy-paul-caribbean/#day-01-10
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-10
+END:VEVENT
+BEGIN:VEVENT
+UID:day-2027-01-11@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART;VALUE=DATE:20270111
+DTEND;VALUE=DATE:20270112
+SUMMARY:Cruise day 3: At sea
+DESCRIPTION:A day on board\, sailing north from St. Lucia to Montserrat.\nT
+ onight: Seabourn Ovation\nhttps://spencertownley-sys.github.io/travel-plan
+ -sites/cindy-paul-caribbean/#day-01-11
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-11
+END:VEVENT
+BEGIN:VEVENT
+UID:day-2027-01-12@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART;VALUE=DATE:20270112
+DTEND;VALUE=DATE:20270113
+SUMMARY:Cruise day 4: Little Bay\, Montserrat
+DESCRIPTION:Quiet volcano island. Plan so far: walk around town.\nTonight: 
+ Seabourn Ovation\nhttps://spencertownley-sys.github.io/travel-plan-sites/c
+ indy-paul-caribbean/#day-01-12
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-12
+END:VEVENT
+BEGIN:VEVENT
+UID:port-2027-01-12@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART:20270112T120000Z
+DTEND:20270112T220000Z
+SUMMARY:🚢 In port: Little Bay\, Montserrat (all aboard 6:00pm)
+DESCRIPTION:Ship's time (Atlantic\, UTC−4).\nhttps://spencertownley-sys.g
+ ithub.io/travel-plan-sites/cindy-paul-caribbean/#day-01-12
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-12
+END:VEVENT
+BEGIN:VEVENT
+UID:day-2027-01-13@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART;VALUE=DATE:20270113
+DTEND;VALUE=DATE:20270114
+SUMMARY:Cruise day 5: St. John's\, Antigua
+DESCRIPTION:Morning mangrove kayak\, then a walk through old St. John's.\nT
+ onight: Seabourn Ovation\nhttps://spencertownley-sys.github.io/travel-plan
+ -sites/cindy-paul-caribbean/#day-01-13
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-13
+END:VEVENT
+BEGIN:VEVENT
+UID:port-2027-01-13@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART:20270113T120000Z
+DTEND:20270114T010000Z
+SUMMARY:🚢 In port: St. John's\, Antigua (all aboard 9:00pm)
+DESCRIPTION:Ship's time (Atlantic\, UTC−4).\nhttps://spencertownley-sys.g
+ ithub.io/travel-plan-sites/cindy-paul-caribbean/#day-01-13
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-13
+END:VEVENT
+BEGIN:VEVENT
+UID:x-2027-01-13-0@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART:20270113T123000Z
+DTEND:20270113T163000Z
+SUMMARY:⭐ National Park mangrove kayak
+DESCRIPTION:Confirm the operator's meeting point.\nhttps://spencertownley-s
+ ys.github.io/travel-plan-sites/cindy-paul-caribbean/#day-01-13
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-13
+END:VEVENT
+BEGIN:VEVENT
+UID:day-2027-01-14@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART;VALUE=DATE:20270114
+DTEND;VALUE=DATE:20270115
+SUMMARY:Cruise day 6: Carambola Beach\, St. Kitts
+DESCRIPTION:Day trip across to Nevis with beach time at Pinney's Beach.\nTo
+ night: Seabourn Ovation\nhttps://spencertownley-sys.github.io/travel-plan-
+ sites/cindy-paul-caribbean/#day-01-14
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-14
+END:VEVENT
+BEGIN:VEVENT
+UID:port-2027-01-14@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART:20270114T120000Z
+DTEND:20270114T210000Z
+SUMMARY:🚢 In port: Carambola Beach\, St. Kitts (all aboard 5:00pm)
+DESCRIPTION:Ashore by tender. Ship's time (Atlantic\, UTC−4).\nhttps://sp
+ encertownley-sys.github.io/travel-plan-sites/cindy-paul-caribbean/#day-01-
+ 14
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-14
+END:VEVENT
+BEGIN:VEVENT
+UID:x-2027-01-14-2@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART:20270114T130000Z
+DTEND:20270114T180000Z
+SUMMARY:⭐ GetYourGuide — Nevis Getaway with free time at Pinney's Beach
+DESCRIPTION:Beach time.\nhttps://spencertownley-sys.github.io/travel-plan-s
+ ites/cindy-paul-caribbean/#day-01-14
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-14
+END:VEVENT
+BEGIN:VEVENT
+UID:day-2027-01-15@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART;VALUE=DATE:20270115
+DTEND;VALUE=DATE:20270116
+SUMMARY:Cruise day 7: Great Harbour\, Jost Van Dyke
+DESCRIPTION:Beach day at White Bay and a Painkiller at the Soggy Dollar.\nT
+ onight: Seabourn Ovation\nhttps://spencertownley-sys.github.io/travel-plan
+ -sites/cindy-paul-caribbean/#day-01-15
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-15
+END:VEVENT
+BEGIN:VEVENT
+UID:port-2027-01-15@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART:20270115T120000Z
+DTEND:20270115T220000Z
+SUMMARY:🚢 In port: Great Harbour\, Jost Van Dyke (all aboard 6:00pm)
+DESCRIPTION:Ashore by tender. Ship's time (Atlantic\, UTC−4).\nhttps://sp
+ encertownley-sys.github.io/travel-plan-sites/cindy-paul-caribbean/#day-01-
+ 15
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-15
+END:VEVENT
+BEGIN:VEVENT
+UID:day-2027-01-16@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART;VALUE=DATE:20270116
+DTEND;VALUE=DATE:20270117
+SUMMARY:Cruise day 8: Philipsburg\, Sint Maarten
+DESCRIPTION:Island highlights tour across the Dutch and French sides\, with
+  lunch in Grand Case.\nTonight: Seabourn Ovation\nhttps://spencertownley-s
+ ys.github.io/travel-plan-sites/cindy-paul-caribbean/#day-01-16
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-16
+END:VEVENT
+BEGIN:VEVENT
+UID:port-2027-01-16@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART:20270116T110000Z
+DTEND:20270117T010000Z
+SUMMARY:🚢 In port: Philipsburg\, Sint Maarten (all aboard 9:00pm)
+DESCRIPTION:Ship's time (Atlantic\, UTC−4).\nhttps://spencertownley-sys.g
+ ithub.io/travel-plan-sites/cindy-paul-caribbean/#day-01-16
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-16
+END:VEVENT
+BEGIN:VEVENT
+UID:x-2027-01-16-0@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART:20270116T130000Z
+DTEND:20270116T190000Z
+SUMMARY:⭐ Viator — Sint Maarten Highlights\, French and Dutch sides
+DESCRIPTION:Lunch at Grand Case is not included.\nhttps://spencertownley-sy
+ s.github.io/travel-plan-sites/cindy-paul-caribbean/#day-01-16
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-16
+END:VEVENT
+BEGIN:VEVENT
+UID:day-2027-01-17@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART;VALUE=DATE:20270117
+DTEND;VALUE=DATE:20270118
+SUMMARY:Cruise day 9: Soper's Hole\, Tortola (BVI)
+DESCRIPTION:Seabourn excursion to Norman Island.\nTonight: Seabourn Ovation
+ \nhttps://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-caribb
+ ean/#day-01-17
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-17
+END:VEVENT
+BEGIN:VEVENT
+UID:port-2027-01-17@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART:20270117T120000Z
+DTEND:20270117T210000Z
+SUMMARY:🚢 In port: Soper's Hole\, Tortola (BVI) (all aboard 5:00pm)
+DESCRIPTION:Ashore by tender. Ship's time (Atlantic\, UTC−4).\nhttps://sp
+ encertownley-sys.github.io/travel-plan-sites/cindy-paul-caribbean/#day-01-
+ 17
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-17
+END:VEVENT
+BEGIN:VEVENT
+UID:day-2027-01-18@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART;VALUE=DATE:20270118
+DTEND;VALUE=DATE:20270119
+SUMMARY:Cruise day 10: Carambola Beach\, St. Kitts
+DESCRIPTION:Beach day at Carambola.\nTonight: Seabourn Ovation\nhttps://spe
+ ncertownley-sys.github.io/travel-plan-sites/cindy-paul-caribbean/#day-01-1
+ 8
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-18
+END:VEVENT
+BEGIN:VEVENT
+UID:port-2027-01-18@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART:20270118T120000Z
+DTEND:20270118T210000Z
+SUMMARY:🚢 In port: Carambola Beach\, St. Kitts (all aboard 5:00pm)
+DESCRIPTION:Ashore by tender. Ship's time (Atlantic\, UTC−4).\nhttps://sp
+ encertownley-sys.github.io/travel-plan-sites/cindy-paul-caribbean/#day-01-
+ 18
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-18
+END:VEVENT
+BEGIN:VEVENT
+UID:day-2027-01-19@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART;VALUE=DATE:20270119
+DTEND;VALUE=DATE:20270120
+SUMMARY:Cruise day 11: At sea
+DESCRIPTION:A day on board\, sailing south to Martinique.\nTonight: Seabour
+ n Ovation\nhttps://spencertownley-sys.github.io/travel-plan-sites/cindy-pa
+ ul-caribbean/#day-01-19
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-19
+END:VEVENT
+BEGIN:VEVENT
+UID:day-2027-01-20@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART;VALUE=DATE:20270120
+DTEND;VALUE=DATE:20270121
+SUMMARY:Cruise day 12: Trois-Îlets\, Martinique
+DESCRIPTION:French Creole Martinique. Nothing booked yet — ideas from the
+  sheet below.\nTonight: Seabourn Ovation\nhttps://spencertownley-sys.githu
+ b.io/travel-plan-sites/cindy-paul-caribbean/#day-01-20
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-20
+END:VEVENT
+BEGIN:VEVENT
+UID:port-2027-01-20@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART:20270120T120000Z
+DTEND:20270120T220000Z
+SUMMARY:🚢 In port: Trois-Îlets\, Martinique (all aboard 6:00pm)
+DESCRIPTION:Ashore by tender. Ship's time (Atlantic\, UTC−4).\nhttps://sp
+ encertownley-sys.github.io/travel-plan-sites/cindy-paul-caribbean/#day-01-
+ 20
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-20
+END:VEVENT
+BEGIN:VEVENT
+UID:day-2027-01-21@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART;VALUE=DATE:20270121
+DTEND;VALUE=DATE:20270122
+SUMMARY:Cruise day 13: Port Elizabeth\, Bequia
+DESCRIPTION:Walk the waterfront to Princess Margaret Beach.\nTonight: Seabo
+ urn Ovation\nhttps://spencertownley-sys.github.io/travel-plan-sites/cindy-
+ paul-caribbean/#day-01-21
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-21
+END:VEVENT
+BEGIN:VEVENT
+UID:port-2027-01-21@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART:20270121T120000Z
+DTEND:20270121T210000Z
+SUMMARY:🚢 In port: Port Elizabeth\, Bequia (all aboard 5:00pm)
+DESCRIPTION:Ashore by tender. Ship's time (Atlantic\, UTC−4).\nhttps://sp
+ encertownley-sys.github.io/travel-plan-sites/cindy-paul-caribbean/#day-01-
+ 21
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-21
+END:VEVENT
+BEGIN:VEVENT
+UID:day-2027-01-22@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART;VALUE=DATE:20270122
+DTEND;VALUE=DATE:20270123
+SUMMARY:Cruise day 14: St. George's\, Grenada
+DESCRIPTION:The Spice Isle: market\, harbor and fort\, right off the ship.\
+ nTonight: Seabourn Ovation\nhttps://spencertownley-sys.github.io/travel-pl
+ an-sites/cindy-paul-caribbean/#day-01-22
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-22
+END:VEVENT
+BEGIN:VEVENT
+UID:port-2027-01-22@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART:20270122T120000Z
+DTEND:20270122T220000Z
+SUMMARY:🚢 In port: St. George's\, Grenada (all aboard 6:00pm)
+DESCRIPTION:Ship's time (Atlantic\, UTC−4).\nhttps://spencertownley-sys.g
+ ithub.io/travel-plan-sites/cindy-paul-caribbean/#day-01-22
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-22
+END:VEVENT
+BEGIN:VEVENT
+UID:day-2027-01-23@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART;VALUE=DATE:20270123
+DTEND;VALUE=DATE:20270124
+SUMMARY:Cruise day 15: Bridgetown → Atlanta
+DESCRIPTION:Leave the ship and fly back to Atlanta.\nTonight: Atlanta Airpo
+ rt Marriott Gateway\nhttps://spencertownley-sys.github.io/travel-plan-site
+ s/cindy-paul-caribbean/#day-01-23
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-23
+END:VEVENT
+BEGIN:VEVENT
+UID:day-2027-01-24@cindy-paul-caribbean
+DTSTAMP:20261127T010418Z
+DTSTART;VALUE=DATE:20270124
+DTEND;VALUE=DATE:20270125
+SUMMARY:Atlanta → Seattle
+DESCRIPTION:Early flight home.\nTonight: Home\nhttps://spencertownley-sys.g
+ ithub.io/travel-plan-sites/cindy-paul-caribbean/#day-01-24
+URL:https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-carib
+ bean/#day-01-24
+END:VEVENT
+END:VCALENDAR
