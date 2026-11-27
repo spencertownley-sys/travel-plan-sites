@@ -1,0 +1,200 @@
+{
+  "places": {
+    "barbados": {
+      "currency": "Barbados dollar (BBD, Bds$). Fixed at Bds$2 = US$1.",
+      "usd": "US notes (not coins) accepted island-wide; change comes back in Barbados dollars. Shops usually use Bds$2.00 per US$1; banks use about Bds$1.98.",
+      "cards": "Visa and Mastercard taken at most stores, restaurants and hotels. Amex and Discover only at some places. Small shops, buses, vendors and many taxis want cash.",
+      "atm": "The cruise terminal has ATMs and a currency exchange; Cunard says the terminal ATMs give US dollars (other reports say Bds$ only). Plenty of bank ATMs on Broad Street in Bridgetown. Hilton Barbados lists an on-site ATM and exchange. The airport (BGI) has an exchange bureau and bank in arrivals.",
+      "cash_tip": "Carry about US$60-100 in $1, $5, $10 and $20 bills for taxis, tips and beach chairs; spend any Barbados dollar change before you fly home.",
+      "sources": [
+        "https://www.centralbank.org.bb/news/general-press-release/fixed-for-forty-one-years",
+        "https://barbadospocketguide.com/visitors-to-barbados/plan-your-trip/banking.html",
+        "https://www.cunard.com/en-us/ports/bridgetown-barbados",
+        "https://www.princess.com/en-int/blog/barbados-cruise-port",
+        "https://finder.com/using-a-credit-card-in-barbados",
+        "https://barbados.org/airport/barbados-airport-facilities.php",
+        "https://www.booking.com/hotel/bb/barbados-needhamspoint.en-gb.html"
+      ]
+    },
+    "stlucia": {
+      "currency": "Eastern Caribbean dollar (XCD, EC$). Fixed at EC$2.70 = US$1.",
+      "usd": "US dollars widely accepted in tourist areas, shops, restaurants and taxis; change usually in EC$. Bank of Saint Lucia buys US cash at EC$2.67; shops may use 2.60-2.70. Agree taxi fares and the currency before you get in.",
+      "cards": "Visa and Mastercard at hotels, restaurants and larger stores; small local shops and vendors seldom take cards. Amex at large hotels and shops but less widely than Visa/Mastercard.",
+      "atm": "No ATM confirmed inside Pointe Seraphine. Bank of Saint Lucia ATMs at the Waterfront (2) and Financial Centre, Bridge Street (5); Massy Stores Waterfront and Blue Coral Mall (Bridge Street) also have ATMs, all near La Place Carenage. ATMs give EC dollars.",
+      "cash_tip": "Carry about US$50-80 in $1, $5, $10 and $20 bills for taxis, tips and small vendors; use a card for meals and shops.",
+      "sources": [
+        "https://www.bankofsaintlucia.com/currency-rates",
+        "https://www.bankofsaintlucia.com/p/24-hour-atm-network",
+        "https://stlucia.org/en/plan-your-trip/",
+        "https://www.frommers.com/destinations/st-lucia/planning-a-trip/fast-facts",
+        "https://www.celebritycruises.com/ports/castries",
+        "https://worldtravelguide.net/guides/caribbean/st-lucia/money-duty-free"
+      ]
+    },
+    "montserrat": {
+      "currency": "Eastern Caribbean dollar (XCD, EC$). Fixed at EC$2.70 = US$1.",
+      "usd": "Some shops take US dollars but many prefer EC$; change comes back in EC$. Bring cash: it is the main way to pay here.",
+      "cards": "Limited. A few hotels and larger restaurants take Visa/Mastercard; small shops may not take cards and the ferry is cash only. Do not count on Amex.",
+      "atm": "No ATM at Little Bay. The only bank ATMs are Bank of Montserrat on Brades Main Road, about 10 minutes' drive. RBC closed in 2021. Travellers report the Bank of Montserrat ATM does not always take foreign cards.",
+      "cash_tip": "Plan to be all cash: bring about US$100-150 in $1, $5, $10 and $20 bills (or EC$ from an earlier island) for the taxi or guide, tips, entry fees and snacks.",
+      "sources": [
+        "https://en.wikivoyage.org/wiki/Montserrat",
+        "https://www.cruisecritic.com/find-a-cruise/port-montserrat",
+        "https://www.zjbradio.com/news/2021/5/31/the-bank-of-montserrat-finally-transfers-rbc-costumers-to-its-banking-platform",
+        "https://worldtravelguide.net/guides/caribbean/montserrat/money-duty-free"
+      ]
+    },
+    "antigua": {
+      "currency": "Eastern Caribbean dollar (XCD, EC$). Fixed at EC$2.70 = US$1.",
+      "usd": "US dollars widely accepted, and tourist prices are often shown in US$. Change usually comes back in EC$, often at a worse rate (around 2.60-2.67).",
+      "cards": "Visa and Mastercard at duty-free shops, hotels and established restaurants. Amex acceptance is patchy. Cash for taxis, beach bars, small eateries and markets.",
+      "atm": "Bank ATMs within a few blocks of Heritage Quay: CIBC Caribbean (High St at Market St) and ACB (High St / Financial Centre). Cruise Critic also lists a waterfront ATM kiosk between Heritage and Redcliffe Quays and one at King's Casino. Most give EC$ only; a few give US$.",
+      "cash_tip": "Carry about US$60-100 in $1, $5, $10 and $20 bills for the taxi, beach chairs, tips and drinks at the beach.",
+      "sources": [
+        "https://www.cruisecritic.com/find-a-cruise/port-antigua-st-johns",
+        "https://cruisesheet.com/port/st-johns-antigua",
+        "https://www.mapquest.com/ag/cibc-caribbean-765556990",
+        "https://antigua.news/2025/11/28/acb-begins-smart-atm-rollout",
+        "https://worldtravelguide.net/guides/caribbean/antigua-and-barbuda/money-duty-free",
+        "https://www.eccb-centralbank.org/p/antigua-and-barbuda"
+      ]
+    },
+    "stkitts": {
+      "currency": "Eastern Caribbean dollar (XCD, EC$). Fixed at EC$2.70 = US$1. Same on Nevis.",
+      "usd": "US dollars accepted almost everywhere near the port and by taxis; change comes back in EC$, sometimes at a worse rate. US coins are not accepted.",
+      "cards": "Most stores, restaurants and hotels take Visa/Mastercard. Carambola Beach Club takes Visa, Mastercard or cash (US or EC). Nevis beach bars, small shops and taxis are often cash only; some Nevis card machines have refused foreign cards. Amex less certain.",
+      "atm": "Arrival Guides says there is no ATM on the port premises; bank ATMs are a short walk into Basseterre (St Kitts-Nevis-Anguilla National Bank main branch on Central Street, plus The Circus). The National Bank also lists a location at the St Kitts Casino, Port Zante. On Nevis: Bank of Nevis and other bank ATMs in Charlestown. ATMs give mostly EC$; a few give US$ for a fee.",
+      "cash_tip": "Carry about US$80-120 in $1, $5, $10 and $20 bills, more if you go to Nevis, for the taxi, ferry, beach bars at Pinney's and tips.",
+      "sources": [
+        "https://www.arrivalguides.com/en/Travelguide/SAINTKITTSANDNEVIS/transport/atms-at-the-port-133547",
+        "https://www.gov.kn/in-skn-visit-charlestown-nevis-capital/",
+        "https://www.carnival.com/shore-excursions/st-kitts/beach-day-at-carambola-beach-club-431067",
+        "https://boards.cruisecritic.com/topic/1705714-carambola-beach-club-just-back/",
+        "https://www.sknanb.com/contact-us/branches/",
+        "https://www.travelwithhello.com/blog/saint-kitts-and-nevis-currency-money-guide"
+      ]
+    },
+    "jvd": {
+      "currency": "US dollar (USD). The BVI has used the US dollar since 1959.",
+      "usd": "Everything is priced and paid in US dollars; change is in US dollars. There is no currency exchange.",
+      "cards": "Bars like Foxy's and Soggy Dollar usually take Visa and Mastercard, and some take Amex, but many small places, taxis and vendors are cash only.",
+      "atm": "Assume NO working ATM. Frommer's says there is no bank or ATM. NBVI put in an ATM at Great Harbour in 2021, but we could not confirm it works. Bring all the cash you need from the ship.",
+      "cash_tip": "Bring about US$100-150 in $1, $5, $10 and $20 bills from the ship for the water taxi or taxi to White Bay, drinks, beach chairs and tips.",
+      "sources": [
+        "https://www.frommers.com/tips/cruise/frommers-port-report-docking-at-jost-van-dyke/",
+        "https://www.virginislandsnewsonline.com/en/news/new-jvd-atm-is-promise-made-promise-kept-premier-fahie-",
+        "https://www.frommers.com/destinations/virgin-islands/planning-a-trip/money",
+        "https://kwx.liehendr.com/content/wikivoyage_en_all_maxi_2025-02/A/Jost_Van_Dyke"
+      ]
+    },
+    "sxm": {
+      "currency": "Dutch side: Caribbean guilder (XCG, Cg), fixed at about XCG 1.79 = US$1 (it replaced the Netherlands Antillean guilder, ANG, in 2025). French side: euro (EUR, €).",
+      "usd": "Dutch side: US dollars are used everywhere, and change is often in US$. French side: many tourist businesses take US$, sometimes 1:1 with the euro, but rates vary; ask before paying. Smaller French bakeries and shops may want euros.",
+      "cards": "Visa and Mastercard at most shops and restaurants on Front Street and in Marigot and Grand Case; food shacks, souvenir markets and taxis want cash. French-side card payments are charged in euros. Amex at some larger shops only.",
+      "atm": "WIB (Windward Islands Bank) ATM at the Dr. A.C. Wathey Cruise Facility, open 24/7, gives US$10/20/50/100. More WIB ATMs in Philipsburg (Front Street 35, St. Rose Arcade, evening hours only; main branch on D.A. Peterson St). French-side ATMs give euros.",
+      "cash_tip": "Carry about US$60-100 in $1, $5, $10 and $20 bills for taxis, beach chairs and tips; if you eat in Grand Case, pay by card in euros or carry some euros.",
+      "sources": [
+        "https://wib-bank.net/personal/support-services/atm-locations",
+        "https://exch.centralbank.cw/functions/banknotes-coins/caribbean-guilder/frequently-asked-questions",
+        "https://www.curacaochronicle.com/post/local/caribbean-guilder-officially-legal-tender-in-curacao-and-sint-maarten",
+        "https://vacationstmaarten.com/plan-your-vacation/travel-tips/",
+        "https://www.travelwithhello.com/blog/saint-martinfrench-part-currency-money-guide",
+        "https://cruisesheet.com/port/st-maarten"
+      ]
+    },
+    "tortola": {
+      "currency": "US dollar (USD).",
+      "usd": "US dollars are the local money; no exchange needed.",
+      "cards": "Visa and Mastercard at most restaurants, shops and marinas. Some businesses have stopped taking Amex. Taxis, small boutiques and stalls are usually cash only.",
+      "atm": "No ATM confirmed at Soper's Hole / West End. Nearest known ATMs: FirstBank at Nanny Cay Marina, and the bank ATMs in Road Town (Wickham Cay I, ferry terminal). Fees are about US$2-3 per withdrawal. ATMs give US dollars.",
+      "cash_tip": "Bring about US$60-100 in $1, $5, $10 and $20 bills from the ship for taxis, tips and small purchases.",
+      "sources": [
+        "https://www.frommers.com/destinations/tortola-bvi/planning-a-trip/fast-facts",
+        "https://www.frommers.com/destinations/virgin-islands/planning-a-trip/money",
+        "https://www.worldtravelguide.net/guides/caribbean/british-virgin-islands/money-duty-free"
+      ]
+    },
+    "martinique": {
+      "currency": "Euro (EUR, €). Martinique is part of France.",
+      "usd": "US dollars are generally NOT accepted, apart from a few cruise-area taxis. Plan to pay in euros or by card.",
+      "cards": "Visa and Mastercard work at most restaurants, shops and the marina; not every place takes US cards. Independent taxis and small vendors want euro cash. Amex is less common.",
+      "atm": "Crédit Agricole branch with euro cash machines at Village Créole, Pointe du Bout, Les Trois-Îlets, next to the marina. ATMs give euros only.",
+      "cash_tip": "Carry about €40-80 in €5, €10 and €20 notes for taxis, ferry and small purchases, from the Village Créole ATM or ordered from your US bank; pay by card elsewhere.",
+      "sources": [
+        "https://agences.credit-agricole.fr/plan/martinique-guyane/ville/trois-ilets---marina-2093.html",
+        "https://www.cruisecritic.com/articles/french-west-indies-what-to-know-before-you-go",
+        "https://www.cruisecritic.com/find-a-cruise/port-martinique"
+      ]
+    },
+    "bequia": {
+      "currency": "Eastern Caribbean dollar (XCD, EC$). Fixed at EC$2.70 = US$1.",
+      "usd": "US cash accepted by most businesses and taxis; change is in EC$. One guide says businesses and taxis normally use EC$2.60 per US$1.",
+      "cards": "Most hotels, restaurants and boutiques take cards, mainly Visa and Mastercard; check first. Taxis, small shops and beach bars are cash. Amex not confirmed.",
+      "atm": "Bank of St. Vincent and the Grenadines (BOSVG) branch in Port Elizabeth, off Back Street, a short walk from the jetty, with 2 ATMs. Bank open weekdays only. ATMs give EC$.",
+      "cash_tip": "Carry about US$60-100 in $1, $5, $10 and $20 bills for the water taxi or taxi to Princess Margaret or Lower Bay, drinks and tips.",
+      "sources": [
+        "https://www.bosvg.com/locations/",
+        "https://millerpublishing.net/publications/2020/IOSVG20/88/",
+        "https://www.frommers.com/destinations/bequia/planning-a-trip/",
+        "https://www.milehacker.com/travel/st-vincent-and-the-grenadines/bequia/bequia-travel-tips-money-safety-culture/"
+      ]
+    },
+    "grenada": {
+      "currency": "Eastern Caribbean dollar (XCD, EC$). Fixed at EC$2.70 = US$1.",
+      "usd": "US dollars widely accepted, but change usually comes in EC$; some small local places may not take US$. Banks have used about EC$2.67 per US$1 for cash.",
+      "cards": "Most hotels, car rental firms and shops take Visa/Mastercard. Cash for taxis, water taxis, spice vendors and small places. Amex less widely accepted.",
+      "atm": "Cunard says there are ATMs at the Melville Street terminal; you walk out through the Esplanade Mall. Republic Bank's St. George's branch and ATM are on Melville Street nearby, and more ATMs are in town and by the Carenage. ATMs give EC$.",
+      "cash_tip": "Carry about US$60-100 in $1, $5, $10 and $20 bills for taxis or the water taxi to Grand Anse, beach chairs, spices and tips.",
+      "sources": [
+        "https://www.cunard.com/en-us/ports/grenada",
+        "https://www.republicgrenada.com/about/branches-abms",
+        "https://www.celebritycruises.com/ports/grenada",
+        "https://www.cruisecritic.com/find-a-cruise/port-grenada",
+        "https://www.aaa.com/tripcanvas/attraction/grenada-st-georges-cruise-port-VA12564"
+      ]
+    }
+  },
+  "general": {
+    "sxm_currency": "The Caribbean guilder (XCG) became legal tender in Sint Maarten and Curaçao on 31 March 2025, fixed at XCG 1.79 = US$1. The old Netherlands Antillean guilder (ANG) stopped being legal tender on 1 July 2025, so shops will not take ANG in January 2027. Commercial banks exchanged ANG for 12 months after launch; after that, only the central bank (CBCS) exchanges it. The US dollar circulates as before. Some tourism pages still say 'guilder (ANG)'.",
+    "xcd_peg": "The EC dollar has been fixed at EC$2.70 = US$1 since 7 July 1976 (Eastern Caribbean Central Bank). It is used in St Lucia, Montserrat, Antigua, St Kitts & Nevis, St Vincent & the Grenadines (Bequia) and Grenada. Bank rates on 26 Nov 2026 (Bank of Saint Lucia): bank buys US cash at EC$2.67 and other US funds at 2.6882, and sells US$ at 2.7169. Shops that take US$ often give a little less (about 2.60-2.67).",
+    "bbd_peg": "Confirmed: the Barbados dollar has been fixed at Bds$2 = US$1 since July 1975 (Central Bank of Barbados). Banks use about 1.98 to buy US$; shops usually use 2.00.",
+    "dcc": "Dynamic currency conversion is when a card machine or ATM offers to charge you in US dollars instead of the local currency. The shop's bank sets the exchange rate and adds a markup, often 3-12%. Visa says the choice is yours and the merchant must not decide for you. Always choose LOCAL currency (EC$, Bds$, euros, guilders) and let your card do the conversion. Choose 'decline conversion' at ATMs too. BVI ports use US dollars, so no choice comes up. In EC$ islands, if a merchant quotes a US$ price on the card machine, ask them to charge in EC$ instead.",
+    "foreign_fees": "Use a credit card with no foreign transaction fee; otherwise expect about 1-3% on every purchase, even when charged in US$ abroad. Visa and Mastercard are accepted most widely in the Eastern Caribbean; Amex is patchy and some places have dropped it, so carry one Visa or Mastercard. Get cash with a debit card, not a credit card: credit card ATM withdrawals count as cash advances with fees and interest. Debit withdrawals can carry a local ATM fee (about US$2-5) plus your home bank's foreign ATM fee and 1-3% foreign fee, so take out fewer, larger amounts. Tell your bank you are travelling and bring a backup card.",
+    "onboard": "Seabourn onboard accounts are in US dollars and can be settled by credit card or US cash. Guest Services exchanges currency only between US dollars, euros and pounds (useful for euros before Martinique or French St. Martin). Cash advances on your onboard account or credit card are limited and carry a 3% service charge. Seabourn says it gives details of the most convenient exchange facility at other ports on board.",
+    "us_cash_tips": "Yes, bring US cash from home: it is accepted on all these islands except Martinique, and it is the only option on Jost Van Dyke and largely on Montserrat. About US$400-600 for the whole trip, mostly $1s, $5s, $10s and $20s (no $100s). Bring clean, untorn bills, since torn or marked notes may be refused; foreign US coins are not accepted in Barbados or St Kitts & Nevis. Expect change in local currency and spend it on the same island, since EC$ works on all the EC$ islands but not in Barbados, the BVI or St. Martin. No need to buy EC dollars at home: Bank of America does not even list them. Euros are optional: order about €50-100 from your US bank, or get them from Guest Services or the Trois-Îlets ATM.",
+    "sources": [
+      "https://www.eccb-centralbank.org/news/eccb-celebrates-49-years-of-strength-and-stability-of-ec-dollar-peg",
+      "https://www.bankofsaintlucia.com/currency-rates",
+      "https://www.centralbank.org.bb/news/general-press-release/fixed-for-forty-one-years",
+      "https://www.curacaochronicle.com/post/local/caribbean-guilder-officially-legal-tender-in-curacao-and-sint-maarten",
+      "https://exch.centralbank.cw/functions/banknotes-coins/caribbean-guilder/frequently-asked-questions",
+      "https://www.sintmaartengov.org/news/Pages/Tax-Administration-Ends-ANG-Cash-Payments-June-30.aspx",
+      "https://en.wikipedia.org/wiki/Caribbean_guilder",
+      "https://www.visa.com/en-us/personal/travel/dynamic-currency-conversion",
+      "https://www.bankrate.com/credit-cards/advice/say-no-to-dynamic-currency-conversion",
+      "https://www.fool.com/money/credit-cards/articles/watch-out-for-this-costly-extra-fee-when-you-travel-internationally",
+      "https://www.consumerfinance.gov/ask-cfpb/can-i-use-my-prepaid-card-outside-of-the-us-en-501/",
+      "https://www.capitalone.com/learn-grow/money-management/foreign-transaction-fees",
+      "https://www.frommers.com/destinations/virgin-islands/planning-a-trip/money",
+      "https://www.seabourn.com/en/faq/on-board/is-cash-accepted-on-board",
+      "https://www.bankofamerica.com/foreign-exchange/currency-converter.go",
+      "https://boards.cruisecritic.com/topic/2559355-please-take-new-or-quotnewishquot-bills-to-pay-for-things-in-cash-on-the-islands/",
+      "https://www.gov.kn/in-skn-visit-charlestown-nevis-capital/"
+    ]
+  },
+  "unverified": [
+    "Barbados: whether the cruise terminal ATMs dispense US dollars (Cunard says yes; a 2014 Cruise Critic thread says Bds$ only) and which bank runs them.",
+    "Barbados: Hilton Barbados on-site ATM and currency exchange are from booking sites, not Hilton itself; airport ATM currency not confirmed.",
+    "St Lucia: no ATM confirmed inside Pointe Seraphine; Bank of Saint Lucia's list shows none there. 'Shops use 2.60-2.70' is a general estimate, not a documented rate.",
+    "Montserrat: whether the Bank of Montserrat ATM in Brades reliably accepts US cards (traveller reports conflict); RBC branch closed in 2021.",
+    "Antigua: the Cruise Critic 'Scotia Bank ATM kiosk' near Heritage Quay is probably outdated, since Scotiabank Antigua was sold to ECAB in 2021. ACB ATMs had service problems in 2025. The 2.60-2.67 merchant rate is not documented.",
+    "St Kitts: whether there is an ATM in Port Zante itself (Arrival Guides says none on port premises; the National Bank lists a St Kitts Casino, Port Zante location). Carambola payment details come from forums and Carnival's excursion page.",
+    "Jost Van Dyke: whether the NBVI ATM installed in Great Harbour in 2021 works; card acceptance at individual bars (Foxy's, Soggy Dollar) not confirmed.",
+    "Tortola: no ATM found at Soper's Hole / West End; nearest confirmed are Nanny Cay (FirstBank) and Road Town.",
+    "Sint Maarten: the exact end date for exchanging ANG at commercial banks (12 months after 31 Mar 2025) comes from the CBCS FAQ via a search snippet, since the page did not load. The French-side 1:1 US$/euro practice is anecdotal.",
+    "Martinique: Amex acceptance and the possible need for chip-and-PIN at unattended machines were not confirmed. Village Créole ATM hours not listed.",
+    "Bequia: the 'EC$2.60 per US$1' taxi/business rate comes from a single guide snippet; Amex acceptance not confirmed.",
+    "Grenada: exact ATMs inside the Melville Street terminal or Esplanade Mall not named by any source; Republic Bank Melville Street is the nearest confirmed bank.",
+    "General: the cash amounts per port and the US$400-600 trip total are suggestions, not from a source. No CFPB page gave DCC advice; the DCC advice comes from Visa and Bankrate."
+  ]
+}
