@@ -19,6 +19,8 @@ from render_maps import world_px  # noqa: E402
 META = json.load(open(os.path.join(ROOT, "maps", "meta.json")))
 VIDEOS = json.load(open(os.path.join(HERE, "media", "videos.json")))
 PORTS_INFO = json.load(open(os.path.join(HERE, "media", "ports.json")))  # researched Nov 2026, with sources
+EXCURSIONS = json.load(open(os.path.join(HERE, "media", "excursions.json")))  # open days only
+TODO_FOR_PORT = {"montserrat": "plan-montserrat", "martinique": "plan-martinique", "bequia": "plan-bequia", "grenada": "plan-grenada"}
 # which video goes on which day (first visit to each place; the ship tour on the first sea day)
 DAY_VIDEO = {"2027-01-09": "barbados", "2027-01-10": "stlucia", "2027-01-11": "ship", "2027-01-12": "montserrat",
              "2027-01-13": "antigua", "2027-01-14": "stkitts", "2027-01-15": "jvd", "2027-01-16": "sxm",
@@ -422,6 +424,48 @@ def port_guide(key):
     return "".join(o)
 
 
+ACT = {"easy": "Easy", "moderate": "Moderate", "active": "Active"}
+
+
+def excursion_compare(key):
+    x = EXCURSIONS.get(key)
+    if not x:
+        return ""
+    o = ['<section class="excomp"><h3>Compare excursions</h3>'
+         '<p class="blurb">Nothing is booked for this day yet. Seabourn tours are booked in the Seabourn Source app; '
+         'independent tours on the operator\'s website. Prices are per person, as listed in November 2026.</p>'
+         f'<div class="callout tip pick"><h4>Our pick</h4><p>{e(x.get("pick", ""))}</p></div><div class="exgrid">']
+    for op in x["options"]:
+        prov = op.get("provider", "")
+        kind = "Seabourn" if prov == "Seabourn" else ("Do it yourself" if "DIY" in (op.get("name", "") + prov) else "Independent")
+        kcls = {"Seabourn": "sb", "Independent": "ind", "Do it yourself": "diy"}[kind]
+        price = money(op["price_usd"]) if isinstance(op.get("price_usd"), (int, float)) and op["price_usd"] else "Varies"
+        pn = op.get("price_note") or ""
+        if prov == "Seabourn":
+            pn = "Seabourn's starting price, November 2026; confirm for this sailing."
+        elif re.search(r"snippet|429|403|could not be loaded|404", pn):
+            pn = "Approximate price; confirm when booking."
+        dur = op.get("duration")
+        dur = (f"{dur:g} hr" if isinstance(dur, (int, float)) else str(dur)) if dur else ""
+        act = op.get("activity") or ""
+        name = re.sub(r"\s*\([A-Z0-9]{5,7}\)$", "", op.get("name", "")).replace("DIY: ", "")
+        link = f'<a href="{e(op["url"])}" target="_blank" rel="noopener">Details ↗</a>' if op.get("url") else ""
+        o.append(f'<article class="ex {kcls}"><p class="ex-k"><em class="tag {kcls}">{kind}</em>'
+                 + (f'<span>{e(prov)}</span>' if kind == "Independent" else "") + "</p>"
+                 f'<h4>{e(name)}</h4><p class="ex-m"><b>{e(price)}</b>' + (f" · {e(dur)}" if dur else "")
+                 + (f' · <span class="act {e(act)}">{e(ACT.get(act, act))}</span>' if act else "") + "</p>"
+                 f'<p>{e(op.get("highlights", ""))}</p>'
+                 + (f'<small>{e(op.get("activity_reason", ""))}</small>' if op.get("activity_reason") else "")
+                 + (f'<small class="pn">{e(pn)}</small>' if pn else "")
+                 + f"{link}</article>")
+    o.append("</div>")
+    tid = TODO_FOR_PORT.get(key)
+    if tid:
+        o.append(f'<p class="note"><a href="#todo">Tick off the decision on the To do tab →</a></p>')
+    o.append("</section>")
+    return "".join(o)
+
+
 def render_day(d, i):
     sid = day_id(d)
     dd = date_of(d["date"])
@@ -480,6 +524,8 @@ def render_day(d, i):
         out.append('<div class="callout tip"><h4>Good to know</h4><ul>' +
                    "".join(f"<li>{e(x)}</li>" for x in d["tips"]) + "</ul></div>")
     out.append("</div></div>")
+    if d.get("port") in EXCURSIONS and d["kind"] == "port":
+        out.append(excursion_compare(d["port"]))
     if d.get("port") and d["kind"] in ("port", "embark"):
         out.append(port_guide(d["port"]))
     if d["date"] in DAY_VIDEO:
