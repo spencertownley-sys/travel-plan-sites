@@ -17,6 +17,24 @@ import trip  # noqa: E402
 from render_maps import world_px  # noqa: E402
 
 META = json.load(open(os.path.join(ROOT, "maps", "meta.json")))
+VIDEOS = json.load(open(os.path.join(HERE, "media", "videos.json")))
+PORTS_INFO = json.load(open(os.path.join(HERE, "media", "ports.json")))  # researched Nov 2026, with sources
+# which video goes on which day (first visit to each place; the ship tour on the first sea day)
+DAY_VIDEO = {"2027-01-09": "barbados", "2027-01-10": "stlucia", "2027-01-11": "ship", "2027-01-12": "montserrat",
+             "2027-01-13": "antigua", "2027-01-14": "stkitts", "2027-01-15": "jvd", "2027-01-16": "sxm",
+             "2027-01-17": "tortola", "2027-01-20": "martinique", "2027-01-21": "bequia", "2027-01-22": "grenada"}
+
+
+def video_card(key):
+    v = VIDEOS.get(key)
+    if not v:
+        return ""
+    vid = v["youtube_id"]
+    meta = v["channel"] + (" · " + v["duration"] if v.get("duration") else "")
+    return (f'<div class="vid" data-yt="{e(vid)}"><button type="button" class="vid-play" '
+            f'style="background-image:url(https://i.ytimg.com/vi/{e(vid)}/hqdefault.jpg)" aria-label="Play video: {e(v["title"])}">'
+            f'<span class="vid-btn" aria-hidden="true">▶</span><span class="vid-cap"><b>{e(v["title"])}</b><small>{e(meta)}</small></span>'
+            f'</button></div><p class="vid-link"><a href="https://www.youtube.com/watch?v={e(vid)}" target="_blank" rel="noopener">Watch on YouTube ↗</a></p>')
 TODAY_NOTE = "Built from the planning sheet on " + dt.date.today().strftime("%B %-d, %Y")
 
 
@@ -342,6 +360,68 @@ def view_days():
     return "".join(h)
 
 
+def tel(phone):
+    """Show a phone number as text with a tap-to-call link on its first number."""
+    m = re.search(r"\+?[\d][\d\s().-]{6,}\d", phone or "")
+    if not m:
+        return e(phone or "")
+    num = re.sub(r"[^\d+]", "", m.group(0))
+    if not num.startswith("+"):
+        num = "+" + num if len(num) > 10 else num
+    return e(phone[:m.start()]) + f'<a href="tel:{num}">{e(m.group(0))}</a>' + e(phone[m.end():])
+
+
+def help_rows(c):
+    rows = []
+    if c.get("emergency"):
+        rows.append(("Emergency", e(c["emergency"])))
+    hsp = c.get("hospital") or {}
+    if hsp:
+        rows.append(("Hospital", f"{e(hsp.get('name', ''))}, {e(hsp.get('town', ''))}" + (f"<br>{tel(hsp['phone'])}" if hsp.get("phone") else "")))
+    emb = c.get("us_embassy") or {}
+    if emb:
+        ph = tel(emb.get("phone", ""))
+        if emb.get("after_hours"):
+            ph += "<br>After hours: " + tel(emb["after_hours"])
+        url = f'<br><a href="{e(emb["url"])}" target="_blank" rel="noopener">{e(emb["url"].replace("https://", "").rstrip("/"))}</a>' if emb.get("url") else ""
+        rows.append(("US embassy", f"{e(emb.get('name', ''))}<br>{ph}{url}"))
+    return rows
+
+
+def port_guide(key):
+    g = PORTS_INFO.get(key)
+    if not g:
+        return ""
+    t = g.get("taxi") or {}
+    tsum = t.get("type") or t.get("summary") or ""
+    fares = t.get("examples") or t.get("fares") or []
+    rows = [("Where you land", e(g.get("landing", ""))), ("Getting to town", e(g.get("to_town", "")))]
+    taxi = e(tsum)
+    if fares:
+        taxi += "<ul>" + "".join(f"<li>{e(x)}</li>" for x in fares) + "</ul>"
+    if t.get("basis"):
+        taxi += f"<small>{e(t['basis'])}</small>"
+    rows += [("Taxis", taxi), ("Walking", e(g.get("walkability", ""))), ("Accessibility", e(g.get("accessibility", "")))]
+    o = ['<details class="guide" open><summary><h3>Port guide</h3></summary><dl class="ship">']
+    o += [f"<div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in rows if v]
+    o.append("</dl>")
+    if g.get("lunch"):
+        o.append('<h4 class="gh">Lunch near the pier</h4><div class="lunch">')
+        for l in g["lunch"]:
+            o.append(f'<div><b>{e(l["name"])}</b><p>{e(l.get("why", ""))}</p><small>{e(l.get("distance", ""))}</small></div>')
+        o.append("</div>")
+    hr = help_rows(g.get("contacts") or {})
+    if hr:
+        o.append('<h4 class="gh">If you need help</h4><dl class="ship help">' + "".join(f"<div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in hr) + "</dl>")
+    src = g.get("sources") or []
+    o.append('<p class="note">Researched in November 2026 from tourism boards, government fare tables and travel guides. '
+             'Prices and opening hours change, so confirm on the day.'
+             + (f' <details class="src"><summary>Sources ({len(src)})</summary><ul>' + "".join(
+                 f'<li><a href="{e(u)}" target="_blank" rel="noopener">{e(u.split("//")[-1][:70])}</a></li>' for u in src) + "</ul></details>" if src else "")
+             + "</p></details>")
+    return "".join(o)
+
+
 def render_day(d, i):
     sid = day_id(d)
     dd = date_of(d["date"])
@@ -400,6 +480,10 @@ def render_day(d, i):
         out.append('<div class="callout tip"><h4>Good to know</h4><ul>' +
                    "".join(f"<li>{e(x)}</li>" for x in d["tips"]) + "</ul></div>")
     out.append("</div></div>")
+    if d.get("port") and d["kind"] in ("port", "embark"):
+        out.append(port_guide(d["port"]))
+    if d["date"] in DAY_VIDEO:
+        out.append('<h3>Watch</h3>' + video_card(DAY_VIDEO[d["date"]]))
     for j, spec in enumerate(d.get("maps", [])):
         title = trip.MAPS[spec["map"]]["title"]
         if spec["map"] == "route":
@@ -434,6 +518,9 @@ def view_maps():
             facts.append(("Rain", isl["rain"]))
         extra = ('<dl class="facts col">' + "".join(f"<div><dt>{e(k)}</dt><dd>{e(v)}</dd></div>" for k, v in facts) + "</dl>"
                  '<h4>Highlights</h4><ul class="hl">' + "".join(f"<li>{e(x)}</li>" for x in isl["highlights"]) + "</ul>")
+        hr = help_rows((PORTS_INFO.get(isl["id"]) or {}).get("contacts") or {})
+        if hr:
+            extra += '<h4 style="margin-top:16px">If you need help</h4><dl class="facts col help">' + "".join(f"<div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in hr) + "</dl>"
         h.append(f'<section><h2>{e(isl["name"])}</h2>')
         h.append(map_block(f"m-{isl['id']}", {"map": isl["map"], "points": isl["points"]}, blurb=isl["blurb"], extra=extra))
         h.append("</section>")
@@ -447,6 +534,7 @@ def view_ship():
     h.append('<section><h2>Seabourn Ovation</h2><p class="blurb">A small, all-suite luxury ship — about 600 guests — '
              'so tenders are quick, the crew learns your name, and most drinks, dining and tips are included.</p>')
     h.append('<div class="stays">' + "".join(f"<div><b>{e(big)}</b><span>{e(cap)}</span></div>" for big, cap in s["facts"]) + "</div></section>")
+    h.append('<section><h2>Take the tour</h2><p class="blurb">Seabourn\'s own video tour of Ovation and her identical sister ship, Encore.</p>' + video_card("ship") + '</section>')
     h.append(f'<div class="callout caviar"><h4>Caviar in the Surf</h4><p>{e(s["caviar"])}</p></div>')
 
     def deflist(title, rows):

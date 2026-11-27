@@ -46,6 +46,24 @@
     box.hidden = false;
   })();
 
+  // video cards: load YouTube only when tapped
+  document.querySelectorAll(".vid").forEach(function (box) {
+    var btn = box.querySelector(".vid-play");
+    btn.addEventListener("click", function () {
+      if (navigator.onLine === false) {
+        var note = box.querySelector(".vid-off") || document.createElement("p");
+        note.className = "vid-off"; note.textContent = "Videos need an internet connection. Try again when you're back on Wi-Fi.";
+        box.appendChild(note); return;
+      }
+      var f = document.createElement("iframe");
+      f.src = "https://www.youtube-nocookie.com/embed/" + box.getAttribute("data-yt") + "?autoplay=1&rel=0&playsinline=1";
+      f.title = btn.getAttribute("aria-label").replace("Play video: ", "");
+      f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+      f.allowFullscreen = true;
+      box.textContent = ""; box.appendChild(f);
+    });
+  });
+
   // offline support: cache the site so it opens on the ship without Wi-Fi
   if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
     window.addEventListener("load", function () { navigator.serviceWorker.register("sw.js").catch(function () {}); });

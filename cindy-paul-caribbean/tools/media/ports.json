@@ -1,0 +1,735 @@
+{
+ "barbados": {
+  "port": "Bridgetown, Barbados",
+  "dates": "Embark Sat Jan 9, 2027 (sails 9pm); disembark Sat Jan 23, 7am",
+  "tender": false,
+  "landing": "The ship ties up at the Bridgetown Cruise Terminal in the Deep Water Harbour, so you walk straight off. No tender boat needed.",
+  "to_town": "Downtown Bridgetown is about a mile east: a 15–30 minute walk along the harbour, or about 5 minutes by taxi.",
+  "taxi": {
+   "type": "Government-set fares (Road Traffic Regulations, in force since Jan 7, 2023), quoted in Barbados dollars (BBD $2 = US$1). Taxis have no meters, so agree the price before you get in. Fares are posted at the terminal.",
+   "examples": [
+    "Harbour to downtown Bridgetown: BBD $19 (about US$9.50)",
+    "Bridgetown to St. Lawrence Gap: BBD $40 (about US$20); to Holetown: BBD $62 (about US$31)",
+    "Bridgetown to Grantley Adams Airport: BBD $77 (about US$38.50)"
+   ],
+   "source_year": "2023 regulations (listed on a 2026 reference page)"
+  },
+  "walkability": "The harbour-to-town walk is flat but hot with little shade, and it runs past a busy road. Downtown has sidewalks but they are narrow and crowded in places.",
+  "accessibility": "Docked ship, so no tender. Taxis wait right outside the terminal, which makes this the easiest port of the trip for limited mobility.",
+  "lunch": [
+   {
+    "name": "Lobster Alive",
+    "why": "Beachfront on Carlisle Bay, known for lobster, with live jazz/steel pan at lunch. Visit Barbados says lunch runs Wed–Sat, so it fits a Saturday embarkation. Tel (246) 435-0305.",
+    "distance": "About 5–10 minutes by taxi from the terminal"
+   },
+   {
+    "name": "Cuz's Fish Shack",
+    "why": "A Barbados classic for fish cutters (fried fish in a salt bread roll), cheap and right on the sand at Pebbles Beach. Cash; expect a line.",
+    "distance": "About 10 minutes by taxi, near Carlisle Bay / Needham's Point"
+   }
+  ],
+  "contacts": {
+   "emergency": "Police 211, Ambulance 511, Fire 311",
+   "hospital": {
+    "name": "Queen Elizabeth Hospital (QEH)",
+    "town": "Martindale's Road, St. Michael (Bridgetown)",
+    "phone": "+1 (246) 436-6450"
+   },
+   "us_embassy": {
+    "name": "U.S. Embassy Bridgetown",
+    "city": "Wildey Business Park, Wildey, St. Michael, Barbados",
+    "phone": "+1 (246) 227-4399 (main); after-hours emergencies for U.S. citizens +1 (246) 227-4000",
+    "email": "BridgetownACS@state.gov",
+    "url": "https://bb.usembassy.gov/",
+    "note": "The embassy is in Barbados itself."
+   }
+  },
+  "sources": [
+   "https://barbadosdigital.com/reference/current-taxi-fare-rates-in-barbados",
+   "https://www.visitbarbados.org/your-stay/get-around-the-island/taxi-services",
+   "https://www.cruisecritic.com/articles/barbados-cruise-port-terminal-information",
+   "https://www.princess.com/en-sg/blog/barbados-cruise-port",
+   "https://www.visitbarbados.org/lobster-alive-and-all-that-jazz",
+   "https://www.uncommoncaribbean.com/barbados/lobster-alive/",
+   "https://www.visitbarbados.org/cuzs-fish-shak",
+   "https://www.caribjournal.com/?p=64441",
+   "https://www.gov.uk/foreign-travel-advice/barbados/getting-help",
+   "https://www.qehconnect.com/contact-us/",
+   "https://barbadostoday.bb/2025/10/09/qeh-gives-alternatives-contact-numbers-after-telecom-difficulties/",
+   "https://travel.state.gov/content/travel/en/resourcesold/csi/us-embassies/barbados.html"
+  ],
+  "unverified": [
+   "Whether Barbados fares are per car or per person and how many riders one fare covers (the fare list does not say).",
+   "The fare list names 'Bridgetown Harbour', not the cruise terminal by name; assumed to be the same place.",
+   "Exact 2027 lunch hours for Lobster Alive (sources disagree; one says noon–9pm Mon–Sat) and Cuz's opening days.",
+   "Could not load bb.usembassy.gov or travel.state.gov directly (blocked); embassy details come from State Dept listings shown in search results."
+  ]
+ },
+ "stlucia": {
+  "port": "Castries, St. Lucia",
+  "dates": "Sun Jan 10, 2027, 8am–6pm",
+  "tender": true,
+  "landing": "Tenders land at the Pointe Séraphine cruise terminal (duty-free mall, north side of the harbour) or at La Place Carenage right in downtown Castries; the ship will announce which.",
+  "to_town": "From La Place Carenage you are in town, a few minutes' walk to Derek Walcott Square and the market; from Pointe Séraphine it is about a 15–20 minute walk around the harbour or a short water-taxi or car ride.",
+  "taxi": {
+   "type": "Fares are set by government in a schedule (EC$ and US$), but taxis are unmetered, so always agree the price, and which currency, before you set off. Prices are usually per car.",
+   "examples": [
+    "Castries to Rodney Bay / Reduit Beach: about US$20–30 per car (Frommer's says $20–25; GoByTaxi lists $30)",
+    "Castries to Morne Fortune (Pink Plantation House): short ride, likely under US$20; confirm with the driver"
+   ],
+   "source_year": "Estimates from 2024–2025 guides; official schedule not readable"
+  },
+  "walkability": "Downtown Castries is flat and compact, but sidewalks are narrow and traffic is heavy. Anything beyond town (Morne Fortune, Rodney Bay, Marigot) is up steep, winding roads, so take a taxi. It's a Sunday, so many shops and the market will be quiet or closed.",
+  "accessibility": "Tender port: you step from the ship onto a small boat and up onto a pier, which can be hard if the sea is choppy. Guests who cannot manage a few steps should check with Seabourn before going ashore.",
+  "lunch": [
+   {
+    "name": "Spinnakers Beach Bar & Restaurant",
+    "why": "Open every day (listed 9am–9pm) right on Reduit Beach, one of the island's best beaches; easy seafood and drinks. Tel (758) 452-8491.",
+    "distance": "About 20–30 minutes by taxi north to Rodney Bay"
+   },
+   {
+    "name": "Pink Plantation House",
+    "why": "Creole lunch on the veranda of a 140-year-old pink plantation house with views over Castries harbour; listed as open daily 10am–3pm. Call ahead: +1 758-452-5422.",
+    "distance": "About 10–15 minutes by taxi up Morne Fortune"
+   }
+  ],
+  "contacts": {
+   "emergency": "911 for police, ambulance and fire (UK travel advice); Canada also lists 999 for police",
+   "hospital": {
+    "name": "Owen King European Union (OKEU) Hospital",
+    "town": "Millennium Highway, Castries",
+    "phone": "+1 (758) 458-6500"
+   },
+   "us_embassy": {
+    "name": "U.S. Embassy Bridgetown",
+    "city": "Wildey Business Park, Wildey, St. Michael, Barbados",
+    "phone": "+1 (246) 227-4399 (main); after-hours emergencies for U.S. citizens +1 (246) 227-4000",
+    "email": "BridgetownACS@state.gov",
+    "url": "https://bb.usembassy.gov/",
+    "note": "U.S. Embassy Bridgetown, Barbados covers St. Lucia (there is no U.S. embassy in St. Lucia)."
+   }
+  },
+  "sources": [
+   "https://www.frommers.com/destinations/st-lucia/planning-a-trip/getting-around",
+   "https://www.gobytaxi.com/north-america/saint-lucia/rodney-bay/rates",
+   "https://www.attorneygeneralchambers.com/laws-of-saint-lucia/motor-vehicles-and-road-traffic-act/part-2-taxi-fares-in-uss",
+   "https://www.celebritycruises.com/ports/castries",
+   "https://www.gpsmycity.com/attractions/la-place-carenage-cruise-port-terminal-63305.html",
+   "https://www.frommers.com/destinations/st-lucia/nightlife/spinnakers-restaurant--beach-bar",
+   "https://www.aaa.com/tripcanvas/restaurant/spinnakers-restaurant-and-beachfront-bar-AA79252",
+   "https://www.fodors.com/world/caribbean/st-lucia/restaurants/lunch",
+   "https://www.hoteles.com/go/st-lucia/great-restaurants-st-lucia",
+   "https://www.frommers.com/destinations/st-lucia/restaurants/the-coal-pot",
+   "https://www.gov.uk/foreign-travel-advice/st-lucia/getting-help",
+   "https://travel.gc.ca/assistance/embassies-consulates/saint-lucia",
+   "https://www.gov.uk/government/publications/st-lucia-list-of-medical-facilities-practitioners/list-of-english-speaking-doctors-and-medical-facilities-in-st-lucia"
+  ],
+  "unverified": [
+   "The official 2023 St. Lucia fare schedule (Attorney General's site) would not load, so taxi prices are guide estimates, not the official figures.",
+   "Pink Plantation House: one listing said it was closed Dec 2022 to Dec 2024; I could not confirm it reopened, and Fodor's pages disagree on its closed day. Must call ahead.",
+   "Spinnakers hours come from Frommer's/AAA listings, not a dated 2025–2026 source.",
+   "Note: The Coal Pot (popular lunch spot near Pointe Séraphine) is closed Sundays, so it was left out.",
+   "Which tender landing Seabourn will use on Jan 10."
+  ]
+ },
+ "montserrat": {
+  "port": "Little Bay, Montserrat",
+  "dates": "Tue Jan 12, 2027, 8am–6pm",
+  "tender": null,
+  "landing": "Ships land guests at the Little Bay jetty / ferry terminal on the island's northwest coast; most ships anchor and tender in, so expect a tender unless Seabourn says otherwise.",
+  "to_town": "Little Bay is the island's small hub, and Brades (the main village and government centre) is right next door; the volcano sights (Montserrat Volcano Observatory, views of buried Plymouth) need a taxi or tour.",
+  "taxi": {
+   "type": "Official maximum fares exist and are posted at the port, but the only published list is very old, so most visitors hire a driver-guide for an island tour at an agreed price.",
+   "examples": [
+    "Taxi island tour (volcano views, Observatory, Plymouth lookouts): about US$120 for 1–4 people, roughly 3–3.5 hours (visitor report)",
+    "Seabourn's own 'Buried City & Observatory' tour: from about US$120 per person, about 2.5 hours"
+   ],
+   "source_year": "Visitor report undated; Seabourn price 2026"
+  },
+  "walkability": "Montserrat is very hilly and there are few sidewalks. You can stroll the Little Bay beach and port area, but plan on a taxi for everything else.",
+  "accessibility": "Likely a tender landing at a small jetty that can be exposed to swell, then hilly roads, so this port is hard for limited mobility; check with Seabourn.",
+  "lunch": [
+   {
+    "name": "Summer Breeze Restaurant",
+    "why": "Small local spot in Marine Village, Little Bay, serving curries, rotis and paninis with rum punches; listed as open Tuesdays 10am–10pm. Tel +1 664-491-8398.",
+    "distance": "Short walk from the Little Bay landing"
+   },
+   {
+    "name": "Pont's Beach View",
+    "why": "Rustic beach bar in Little Bay with cheap, generous local plates (fish, ribs, Creole chicken); Fodor's lists lunch Tuesday–Sunday. Tel +1 664-496-1876.",
+    "distance": "Short walk along Little Bay beach"
+   }
+  ],
+  "contacts": {
+   "emergency": "911 or 999 for police, ambulance and fire; non-emergency police +1 (664) 491-2555",
+   "hospital": {
+    "name": "Glendon Hospital",
+    "town": "St. John's (north Montserrat)",
+    "phone": "+1 (664) 491-2552 (main); +1 (664) 491-2802 (emergencies)"
+   },
+   "us_embassy": {
+    "name": "U.S. Embassy Bridgetown",
+    "city": "Wildey Business Park, Wildey, St. Michael, Barbados",
+    "phone": "+1 (246) 227-4399 (main); after-hours emergencies for U.S. citizens +1 (246) 227-4000",
+    "email": "BridgetownACS@state.gov",
+    "url": "https://bb.usembassy.gov/",
+    "note": "No U.S. embassy or consulate on Montserrat (a British territory); U.S. citizens are served by U.S. Embassy Bridgetown, Barbados."
+   }
+  },
+  "sources": [
+   "https://visitmontserrat.com/?p=64",
+   "https://www.fodors.com/world/caribbean/montserrat/things-to-do/sights/reviews/little-bay-450279",
+   "https://www.lonelyplanet.com/montserrat/restaurants",
+   "https://www.seabourn.com/en/cruise-destinations/caribbean-cruises/caribbean-ports/little-bay-montserrat-msr",
+   "https://www.seabourn.com/en/cruise-destinations/caribbean-cruises/caribbean-ports/msr/ltb004",
+   "https://noonsite.com/place/montserrat/little-bay/view/activities-attractions-and-shopping",
+   "https://toandfromtheairport.com/montserrat.php",
+   "https://www.travelpulse.com/news/destinations/montserrat-launches-construction-of-19-5-million-port-development",
+   "https://www.gov.uk/foreign-travel-advice/montserrat/getting-help",
+   "https://www.gov.ms/government/ministries/ministry-of-health-and-social-services/secondary-health-care/",
+   "https://www.cia.gov/the-world-factbook/about/archives/2022/countries/montserrat/travel-facts"
+  ],
+  "unverified": [
+   "Whether Seabourn Ovation docks at the Little Bay jetty or tenders on Jan 12 (port works under way since 2023; most ships tender).",
+   "Current taxi fares: the only official list I found dates from 2005.",
+   "Seabourn 'Buried City & Observatory' price: from search summary, page not opened in full.",
+   "Both lunch picks: Visit Montserrat listings date from about 2020 and I found no 2025–2026 reviews. Call ahead.",
+   "Drive times from Little Bay to the Observatory and Plymouth lookouts."
+  ]
+ },
+ "antigua": {
+  "port": "St. John's, Antigua",
+  "dates": "Wed Jan 13, 2027, 8am–9pm",
+  "tender": false,
+  "landing": "Ships dock at a pier right at the edge of downtown St. John's (Heritage Quay or the neighbouring Redcliffe Quay / Nevis Street pier), so you walk off into the shopping area.",
+  "to_town": "You are in town as soon as you step off; St. John's Cathedral is a few blocks uphill, and the beaches are 10–40 minutes away by taxi.",
+  "taxi": {
+   "type": "Fares are set by the Antigua & Barbuda Transport Board and posted at the taxi dispatch kiosk at Heritage Quay. Prices are usually per car in US dollars, but confirm per-car vs per-person and agree before you go.",
+   "examples": [
+    "St. John's to Dickenson Bay: about US$13–15 per car",
+    "St. John's to English Harbour / Nelson's Dockyard: about US$25–45 per car (some drivers will wait while you look around for about US$50)"
+   ],
+   "source_year": "Third-party guides, 2025–2026; official tariff not found online"
+  },
+  "walkability": "Downtown is compact and mostly flat near the quays, with a gentle climb to the cathedral. Sidewalks are narrow or missing in spots, traffic drives on the left, and it gets hot by midday.",
+  "accessibility": "Docked ship with level quay access to the duty-free area and taxi rank, so it's fairly easy. Old-town streets have uneven curbs.",
+  "lunch": [
+   {
+    "name": "Hemingway's Caribbean Cafe",
+    "why": "Upstairs veranda in an 1800s wooden building overlooking the quays; Creole and Caribbean dishes plus a big rum list. Reopened Oct 2025 after its seasonal break; listed Mon–Sat.",
+    "distance": "2–5 minute walk from Heritage Quay (St. Mary's Street)"
+   },
+   {
+    "name": "Big Banana",
+    "why": "Casual, long-running local favourite in an old rum warehouse at Redcliffe Quay, known for pizza and light lunches.",
+    "distance": "About 5 minute walk from the cruise pier"
+   }
+  ],
+  "contacts": {
+   "emergency": "911 or 999 for police, ambulance and fire",
+   "hospital": {
+    "name": "Sir Lester Bird Medical Centre (formerly Mount St. John's Medical Centre)",
+    "town": "Queen Elizabeth Highway, Michael's Mount, St. John's",
+    "phone": "+1 (268) 484-2700"
+   },
+   "us_embassy": {
+    "name": "U.S. Embassy Bridgetown",
+    "city": "Wildey Business Park, Wildey, St. Michael, Barbados",
+    "phone": "+1 (246) 227-4399 (main); after-hours emergencies for U.S. citizens +1 (246) 227-4000",
+    "email": "BridgetownACS@state.gov",
+    "url": "https://bb.usembassy.gov/",
+    "note": "U.S. Embassy Bridgetown, Barbados covers Antigua and Barbuda."
+   }
+  },
+  "sources": [
+   "https://www.cruisecritic.com/find-a-cruise/port-antigua-st-johns",
+   "https://celebritycruises.com/ports/antigua",
+   "https://www.princess.com/en-int/blog/antigua-cruise-port",
+   "https://sailawaze.com/uk/port-guides/antigua-cruise-port-guide/",
+   "https://www.cestee.com/destination/antigua-and-barbuda/getting-around",
+   "https://www.airporttransferportal.com/en/airport-guides/anu",
+   "https://antiguanice.com/client.php?id=150",
+   "https://visitantiguabarbuda.com/destinations/hemingways",
+   "https://www.gov.uk/foreign-travel-advice/antigua-and-barbuda/getting-help",
+   "https://www.gov.uk/government/publications/antigua-list-of-medical-facilities-practitioners/antigua-and-barbuda-medical-facilities-list",
+   "https://slbmc.org/patients_and_visitors",
+   "https://travel.state.gov/content/travel/en/resourcesold/csi/embassy-and-consulate-lists/antigua-barbuda.html"
+  ],
+  "unverified": [
+   "Which pier Seabourn Ovation will use (Heritage Quay, Redcliffe Quay/Nevis Street, or the more distant Deep Water Harbour).",
+   "Official Transport Board taxi tariff (not found online); fares above are ranges from several guides.",
+   "Big Banana: no 2025–2026 hours found; confirm it is open on a Wednesday.",
+   "The hospital phone comes from a 2024 UK government list under its old name; I assume it is the same number after the rename."
+  ]
+ },
+ "stkitts": {
+  "port": "Carambola Beach Club, South Friar's Bay, St. Kitts",
+  "dates": "Thu Jan 14 and Mon Jan 18, 2027, 8am–5pm",
+  "tender": true,
+  "landing": "The ship anchors off South Friar's Bay and tenders bring you to the Carambola Beach Club on the sand, on the Caribbean side of the island's southeast peninsula.",
+  "to_town": "Basseterre and Port Zante are about a 15-minute taxi ride back north (roughly 5 miles); the beach bars of South Friar's Bay are a short walk along the sand.",
+  "taxi": {
+   "type": "Government-set maximum fares (2021 regulations), per car for 1–4 people, or per person for 5 or more. Quoted in US$ and EC$. Extra US$5 per 15 minutes of waiting after the first 15.",
+   "examples": [
+    "Friar's Bay to/from Basseterre: US$28 per car (1–4 people), or US$7 per person for 5+",
+    "South Friar's Bay to/from Frigate Bay: US$12 per car",
+    "Basseterre to Brimstone Hill Fortress only (max 2 hours): US$55 per car"
+   ],
+   "source_year": "2021 (official gazette, latest found)"
+  },
+  "walkability": "The beach itself is easy, but the peninsula road has no sidewalks and is hilly, so taxi to Basseterre. Port Zante and downtown Basseterre are flat and walkable.",
+  "accessibility": "Tender to a beach landing: expect steps, a moving boat and sand underfoot, so this is hard for limited mobility. Ask Seabourn how guests come ashore.",
+  "lunch": [
+   {
+    "name": "Carambola Beach Club",
+    "why": "The upscale beach club where the tenders land, with loungers, a restaurant and bar; Seabourn often sets up its own beach BBQ here on its calls.",
+    "distance": "At the tender landing"
+   },
+   {
+    "name": "Shipwreck Beach Bar & Grill",
+    "why": "Laid-back beach bar on South Friar's Bay known for fish tacos and catch of the day, plus visiting green monkeys; well reviewed. Tel +1 869-764-7200.",
+    "distance": "About 5–10 minute walk along the beach"
+   }
+  ],
+  "contacts": {
+   "emergency": "911 for police and ambulance; 333 for fire",
+   "hospital": {
+    "name": "Joseph N. France (JNF) General Hospital",
+    "town": "Buckley's Site, Basseterre",
+    "phone": "+1 (869) 465-2551"
+   },
+   "us_embassy": {
+    "name": "U.S. Embassy Bridgetown",
+    "city": "Wildey Business Park, Wildey, St. Michael, Barbados",
+    "phone": "+1 (246) 227-4399 (main); after-hours emergencies for U.S. citizens +1 (246) 227-4000",
+    "email": "BridgetownACS@state.gov",
+    "url": "https://bb.usembassy.gov/",
+    "note": "U.S. Embassy Bridgetown, Barbados covers St. Kitts and Nevis."
+   }
+  },
+  "sources": [
+   "https://tempo.cdn.tambourine.com/st-kitts/media/taxi_fares_2021-64ee0cb7ba639.pdf",
+   "https://seabourn.com/en/us/cruise-destinations/caribbean-cruises/caribbean-ports/carambola-beach-saint-kitts-and-nevis-car",
+   "https://sknis.gov.kn/?p=58306",
+   "https://www.opentable.com/r/carambola-beach-club-basseterre",
+   "https://www.islands.com/1962813/caribbean-south-friars-bay-secret-beach-st-kitts-refreshing-bars-scenic-views",
+   "https://www.afar.com/places/shipwreck-beach-bar-and-grill-saint-george-basseterre-parish",
+   "https://wanderlog.com/place/details/2259880/shipwreck-beach-bar",
+   "https://www.gov.uk/foreign-travel-advice/st-kitts-and-nevis/getting-help",
+   "https://www.gov.uk/government/publications/st-kitts-nevis-list-of-medical-facilities-practioners/st-kitts-and-nevis-medical-facilities",
+   "https://www.gov.kn/?p=647"
+  ],
+  "unverified": [
+   "Carambola Beach Club restaurant: OpenTable lists public lunch Fri–Sun only, and our calls are Thursday and Monday. On cruise days the club usually opens for ship guests, but I could not confirm this.",
+   "Shipwreck: I found no 2025–2026-dated review, and a 2021 forum asked if it was still open (later reviews are strong). Confirm on the day.",
+   "Whether drivers still use the 2021 fare table in 2027, and whether 'Friars Bay' in the Basseterre table includes South Friar's Bay (the Frigate Bay table lists South Friar's Bay separately).",
+   "Drive time and distance to Basseterre are estimates."
+  ]
+ },
+ "jvd": {
+  "port": "Great Harbour, Jost Van Dyke, British Virgin Islands",
+  "dates": "Fri Jan 15, 2027, 8am–6pm",
+  "tender": true,
+  "landing": "The ship anchors offshore and tenders land at the small dock in Great Harbour, a sandy one-street village, steps from Foxy's.",
+  "to_town": "You land in the village itself; White Bay (Soggy Dollar Bar) is the next bay west, a few minutes by taxi or a 15–35 minute walk over a steep hill.",
+  "taxi": {
+   "type": "Open-air taxis, usually priced per person in US dollars (the BVI uses the US dollar). Agree the price at the dock.",
+   "examples": [
+    "Great Harbour to White Bay: about US$10–12 per person each way, or about $10 per person round trip in older reports"
+   ],
+   "source_year": "Forum reports, 2014 and undated; no official tariff found"
+  },
+  "walkability": "Great Harbour is a flat sandy lane, easy to stroll barefoot. The road to White Bay climbs a steep hill with no sidewalk; bring water, a hat and good shoes if walking.",
+  "accessibility": "Tender plus sand streets and possibly a 'wet' beach landing at White Bay, so limited-mobility guests should stay in Great Harbour or check with Seabourn first.",
+  "lunch": [
+   {
+    "name": "Foxy's Tamarind Bar & Restaurant",
+    "why": "The island's famous beach bar since 1968, serving rotis, flying-fish sandwiches and burgers; active with 2025 events.",
+    "distance": "A couple of minutes' walk from the tender dock"
+   },
+   {
+    "name": "Soggy Dollar Bar",
+    "why": "Birthplace of the Painkiller, on gorgeous White Bay beach, with simple lunch food; a 2025 CaribJournal feature still lists it.",
+    "distance": "About 5 minutes by taxi, or a 15–35 minute hilly walk"
+   }
+  ],
+  "contacts": {
+   "emergency": "911 for police, fire and ambulance (999 also listed by some sources); VISAR sea rescue 767",
+   "hospital": {
+    "name": "Dr. D. Orlando Smith Hospital (BVI's only hospital, next to the old Peebles Hospital)",
+    "town": "Road Town, Tortola (by boat from Jost Van Dyke); there is a small community clinic on Jost Van Dyke",
+    "phone": "+1 (284) 852-7500 (BVI Health Services Authority)"
+   },
+   "us_embassy": {
+    "name": "U.S. Embassy Bridgetown",
+    "city": "Wildey Business Park, Wildey, St. Michael, Barbados",
+    "phone": "+1 (246) 227-4399 (main); after-hours emergencies for U.S. citizens +1 (246) 227-4000",
+    "email": "BridgetownACS@state.gov",
+    "url": "https://bb.usembassy.gov/",
+    "note": "No U.S. consulate in the BVI (a British territory); U.S. citizens are served by U.S. Embassy Bridgetown, Barbados."
+   }
+  },
+  "sources": [
+   "https://www.frommers.com/tips/cruise/frommers-port-report-docking-at-jost-van-dyke/",
+   "https://www.frommers.com/destinations/jost-van-dyke-bvi/planning-a-trip/",
+   "https://boards.cruisecritic.com/topic/2387419-taxi-fares-etc/",
+   "https://boards.cruisecritic.co.uk/topic/2952637-looking-for-any-tips-or-suggestions-tortola-to-jost-van-dyke/page/2/",
+   "https://www.foxysbar.com",
+   "https://www.caribjournal.com/2025/07/19/caribbean-island-jost-van-dyke",
+   "https://www.gov.uk/foreign-travel-advice/british-virgin-islands/getting-help",
+   "https://www.gov.uk/foreign-travel-advice/british-virgin-islands/health",
+   "https://www.bvihsa.vg/our-history/",
+   "https://www.bvihsa.vg/medical-services/ems/",
+   "https://www.osac.gov/Country/Barbados/Content/Detail/Report/52105c97-e9a3-4253-91a4-2754b7c2d075"
+  ],
+  "unverified": [
+   "Current Jost Van Dyke taxi fares (only forum reports from 2014 and undated posts).",
+   "Whether Seabourn lands tenders at Great Harbour only or also at White Bay.",
+   "Jost Van Dyke clinic phone and hours (not published); the hospital number is the general BVIHSA line.",
+   "Exact Foxy's lunch hours in January 2027.",
+   "Embassy coverage of BVI and Montserrat comes from State Dept/OSAC/CIA listings; I could not load the current embassy site."
+  ]
+ },
+ "sxm": {
+  "port": "Philipsburg, Sint Maarten",
+  "date": "2027-01-16",
+  "hours": "7am-9pm",
+  "tender": false,
+  "landing": "The ship docks at the Dr. A.C. Wathey Cruise Facility in Great Bay, at the east end of Philipsburg.",
+  "to_town": "Front Street is about 0.7 miles from the terminal, so it's under 15 minutes on foot. A water taxi day pass, about $7 per person with unlimited rides (2024), runs along the bay to the Boardwalk.",
+  "taxi": {
+   "summary": "Fares are set by government decree (National decree on taxi tariffs 2020, updated 2022). The base fare covers 1-2 people, and each extra person pays a smaller add-on. Confirm the total before you get in. There's a 25% surcharge after 10pm, which matters with a 9pm all-aboard.",
+   "fares": [
+    "Cruise port to Philipsburg/Front Street: about $10 for 1-2 people, plus $5 per extra person (Visit St Maarten, page current 2026).",
+    "Cruise port to Maho Beach (watch the planes land): about $20 for 1-2 people, plus $9 per extra person for groups of 3-5 (Visit St Maarten). Cruise Hive (2024) also says $20 one-way.",
+    "Cruise port to Orient Bay (French side): about $30-45 for 1-2 people (Visit St Maarten)."
+   ],
+   "basis": "Government-set. The base rate covers 1-2 passengers, with per-person add-ons after that. The official page is slightly inconsistent, so ask the driver for the total fare.",
+   "source_year": "2024-2026 pages, based on the 2020 decree and its 2022 update"
+  },
+  "walkability": "Very walkable. The pier, the Boardwalk along Great Bay Beach and Front Street's shops are all flat and close together. Taxis or a tour make more sense for Maho, Marigot or Orient Bay.",
+  "accessibility": "Cruise Hive describes the piers and terminal as flat and wheelchair-friendly, with accessible restrooms. The Boardwalk is also level.",
+  "lunch": [
+   {
+    "name": "Ocean Lounge at Holland House Beach Hotel",
+    "why": "Polished seaside lunch on the Boardwalk with Caribbean dishes and Great Bay views. Open daily from noon, with positive reviews in spring 2025.",
+    "distance": "About 15 minutes on foot from the pier along the Boardwalk (Front Street/Boardwalk 43-45), or take the water taxi."
+   },
+   {
+    "name": "Thirsty Pirate",
+    "why": "Casual beach bar right on the Front Street boardwalk, good for a simple lunch with your feet near the sand. Listed open daily 9am-6pm in 2026.",
+    "distance": "An easy walk from the cruise terminal, about 10-15 minutes."
+   }
+  ],
+  "contacts": {
+   "emergency": "Police 911, ambulance 912 (Dutch side). The State Department says 911 works in the Dutch Caribbean.",
+   "hospital": {
+    "name": "St. Maarten Medical Center (SMMC)",
+    "town": "Cay Hill (Welgelegen Road 30), about 10-15 minutes by car from Philipsburg",
+    "phone": "+1 721 543 1111 (24-hour ER, ext. 1401)",
+    "note": "A new St. Maarten General Hospital is being built next door. Check whether it has opened by January 2027."
+   },
+   "us_embassy": {
+    "name": "U.S. Consulate General Curaçao (covers Dutch Sint Maarten; French St. Martin is covered by U.S. Embassy Bridgetown)",
+    "city": "Willemstad, Curaçao (J.B. Gorsiraweg 1)",
+    "phone": "+599 9 461 3066",
+    "after_hours": "+599 9 510 6870 (per State Dept listing). From the US: 1-888-407-4747 or +1 202-501-4444.",
+    "url": "https://cw.usconsulate.gov/"
+   }
+  },
+  "sources": [
+   "https://www.visitstmaarten.com/st-maarten-taxis-taxi-prices/",
+   "https://www.cruisehive.com/st-maarten-cruise-port/139875",
+   "https://www.frommers.com/destinations/st-maarten-st-martin/planning-a-trip/getting-around",
+   "https://opentable.com/r/ocean-lounge-at-holland-house-philipsburg",
+   "https://www.wearesxm.com/?p=3319",
+   "https://www.thirstypiratesxm.com/blog/things-to-do-in-st-maarten-cruise-port/",
+   "https://smmc.sx/Portals/0/DNNGalleryPro/uploads/2019/7/19/ER%20brochure.pdf",
+   "https://travel.state.gov/content/travel/en/resourcesold/csi/embassy-and-consulate-lists/sint-maarten.html",
+   "https://www.cia.gov/the-world-factbook/countries/sint-maarten/travel-facts",
+   "https://thedailyherald.sx/islands/new-hospital-main-building-to-be-ready-by-end-q1-2026"
+  ],
+  "unverified": [
+   "The official taxi page mixes a 'per person' label with 1-2 person base rates. Treat $10 and $20 as the base for 1-2 riders and confirm with the driver.",
+   "The Ocean Lounge distance from the pier is an estimate.",
+   "The Thirsty Pirate hours come from the bar's own 2026 blog.",
+   "Consulate pages (cw.usconsulate.gov) were blocked, so the phone numbers come from State Dept listing pages that may be older. The after-hours number varies across sources.",
+   "Whether the new St. Maarten General Hospital will be open in January 2027 is unknown."
+  ]
+ },
+ "tortola": {
+  "port": "Soper's Hole (Frenchman's Cay), West End, Tortola, BVI",
+  "date": "2027-01-17",
+  "hours": "8am-5pm",
+  "tender": true,
+  "landing": "The ship anchors off West End, and tenders bring you into the Soper's Hole marina wharf on Frenchman's Cay. That's a small yacht harbour with shops, a few restaurants and Pusser's.",
+  "to_town": "Everything at Soper's Hole is steps from the tender landing. Road Town, the capital, and the north-shore beaches (Smuggler's Cove, Long Bay West, Cane Garden Bay) need a taxi.",
+  "taxi": {
+   "summary": "BVI fares are set by law (Road Traffic Passenger Fares Regulations, amended Dec 2022). Island tours are priced per group, and cruise-dock fares are per person, dropping as the group grows. The official table lists fares from the Road Town cruise dock, not from West End, so agree West End fares before you ride.",
+   "fares": [
+    "Island tour, official 2022 rate: $70 total for 1-2 people for 1 hour, $110 for 2 hours, $165 for 3 hours. Groups of 3 pay $85, $130 or $190.",
+    "For comparison, the official fares from the Road Town cruise dock to Cane Garden Bay are $24 for 1 person, $16 each for 2, and $12 each for 3 or more. To Smuggler's Cove they are $32, $18 each, or $15 each (2022). From West End, Smuggler's Cove and Long Bay are much closer, so expect less.",
+    "Unofficial: one Cruise Critic poster reported about $15 per person from Cane Garden Bay to West End."
+   ],
+   "basis": "Government-set. Cruise-dock fares are per person, and island tours are a total fare per group.",
+   "source_year": "2022 (Statutory Instrument 2022 No. 106). A 2024 tariff review was announced, so rates may have changed."
+  },
+  "walkability": "Soper's Hole is tiny and flat, so you can stroll the whole marina in 15-20 minutes. Beyond it the roads are steep, winding and have no sidewalks, so don't try to walk to the beaches.",
+  "accessibility": "The marina boardwalk is mostly level, but tender transfers depend on sea conditions. Tortola's steep roads make taxis or a tour the only practical way to explore with limited mobility.",
+  "lunch": [
+   {
+    "name": "Pusser's Landing (West End)",
+    "why": "The marina's classic waterfront pub, with an outdoor deck, Caribbean seafood, pub food and the famous Painkiller. Seabourn's own port page names it.",
+    "distance": "On the Soper's Hole waterfront, a few minutes' walk from the tender landing."
+   },
+   {
+    "name": "Omar's Coffee House",
+    "why": "Relaxed spot for brunch or an early lunch by the water. A Fodor's Choice, with the best seats out back over the marina.",
+    "distance": "Inside Soper's Hole Marina, a few minutes' walk from the landing."
+   }
+  ],
+  "contacts": {
+   "emergency": "911 (UK government advice; 999 is also listed by the CIA Factbook). Ambulance/EMS on Tortola: (284) 852-7558.",
+   "hospital": {
+    "name": "Dr. D. Orlando Smith Hospital",
+    "town": "Road Town, Tortola (roughly 20-30 minutes by road from West End)",
+    "phone": "+1 284 852 7500 or +1 284 394 3497 (BVI Health Services Authority)"
+   },
+   "us_embassy": {
+    "name": "U.S. Embassy Bridgetown (covers the British Virgin Islands)",
+    "city": "Bridgetown, Barbados (Wildey Business Park, St. Michael)",
+    "phone": "+1 246 227 4000 (also the US-citizen emergency line), main switchboard +1 246 227 4399",
+    "email": "BridgetownACS@state.gov",
+    "url": "https://bb.usembassy.gov/"
+   }
+  },
+  "sources": [
+   "https://bvinews.com/wp-content/uploads/2022/12/SI-No-106-of-2022-Road-Traffic-Passenger-Fares-Amendment-Regulations-2022.pdf",
+   "https://www.caribeez.com/British-Virgin-Islands/article/tortola-bvi-taxi-rates-for-cruise-visitors",
+   "https://www.bvi.gov.vg/media-centre/taxi-and-livery-commission-proposed-tariff-review",
+   "https://seabourn.com/en_US/ports/sopers-hole-frenchmans-cay-bvi.html",
+   "https://www.tripadvisor.com/RestaurantsNear-g147356-d148815-Soper_s_Hole-West_End_Tortola_British_Virgin_Islands.html",
+   "https://www.tripadvisor.com/Restaurant_Review-g147356-d23852390-Reviews-Omar_s_Coffee_House-West_End_Tortola_British_Virgin_Islands.html",
+   "https://www.fodors.com/world/caribbean/british-virgin-islands/tortola/restaurants/west-end",
+   "https://www.bvihsa.vg/medical-services/ems/",
+   "https://www.gov.uk/foreign-travel-advice/british-virgin-islands/getting-help",
+   "https://travel.state.gov/en/international-travel/travel-advisories/british-virgin-islands.html",
+   "https://webarchive.library.unt.edu/web/20130213213621/http://barbados.usembassy.gov/service.html"
+  ],
+  "unverified": [
+   "I couldn't confirm the exact tender landing spot. Soper's Hole marina is assumed, and one third-party listing even mentions docking. A Cruise Critic Ovation reviewer warns that tender landing spots aren't always announced.",
+   "No official fare table from West End/Soper's Hole was found. The listed fares start at the Road Town cruise dock.",
+   "Pusser's Landing and Omar's Coffee House have Tripadvisor pages titled 2026, but I couldn't confirm current 2025-26 hours. Fodor's mentions an Omar's location at Nanny Cay that combined two West End locations, so check which Omar's outlets are still at Soper's Hole.",
+   "The 20-30 minute drive time to Road Town is an estimate, not sourced.",
+   "The embassy website (bb.usembassy.gov) was blocked, so the numbers come from State Dept/OSAC listings."
+  ]
+ },
+ "martinique": {
+  "port": "Trois-Îlets, Martinique (French West Indies)",
+  "date": "2027-01-20",
+  "hours": "8am-6pm",
+  "tender": true,
+  "landing": "Seabourn lists Trois-Îlets as a tender port. The ship anchors in the Bay of Fort-de-France, and tenders most likely land at the Pointe du Bout marina, the resort, restaurant and marina hub of Les Trois-Îlets. The exact pier isn't confirmed, so check the ship's daily program.",
+  "to_town": "From Pointe du Bout marina, Anse Mitan beach and Pointe du Bout beach are a 5-10 minute walk. The village (bourg) of Trois-Îlets and La Pagerie (Empress Josephine's childhood home) are a short taxi ride away, not walking distance. Fort-de-France is about 15-20 minutes across the bay by ferry.",
+  "taxi": {
+   "summary": "Prices are in euros (€), and taxis in Martinique are pricey. Fares go up about 40% at night, on Sundays and on holidays. Agree the price before you get in, and expect drivers to speak mostly French.",
+   "fares": [
+    "Ferry (vedette/navette) from Pointe du Bout marina to Fort-de-France (Pointe Simon pier): about 15-20 minutes, from €5 one-way or €7 round trip per adult. Run by Blue Lines since July 2024, daily roughly 5:50am-10pm. This is much cheaper than a taxi into the capital.",
+    "Taxi from Fort-de-France to any Pointe du Bout hotel: about €65 (older guide).",
+    "Taxi from the airport to Trois-Îlets/Anse Mitan: about €61 on average (2025 quote aggregator, range €30-128+)."
+   ],
+   "basis": "Metered or quoted per car, not per person. Martinique taxis are regulated, but no public cruise rate card was found.",
+   "source_year": "Ferry fare from a tourism listing current after July 2024. Taxi figures are 2025 aggregator estimates and older guides."
+  },
+  "walkability": "The Pointe du Bout area is compact and pleasant on foot, with the marina, shops, a small Creole village of boutiques and two beaches. Getting to the Trois-Îlets bourg, La Pagerie or the Savane des Esclaves needs a taxi or a tour.",
+  "accessibility": "The marina quays and nearby lanes are fairly level, but tender boarding can be tricky in swell. For limited mobility, a ship tour or pre-booked driver is easier than finding taxis.",
+  "lunch": [
+   {
+    "name": "Le Ti Taurus",
+    "why": "Popular beachfront restaurant on Anse Mitan with fresh fish, salads, cocktails and bay views. Lonely Planet says to book, and service can be slow.",
+    "distance": "About a 5-10 minute walk from Pointe du Bout marina, on Anse Mitan near the shuttle pontoon."
+   },
+   {
+    "name": "La Marine (pizzeria-bar-glacier)",
+    "why": "Easy, casual lunch of pizza, salads and ice cream right on the Pointe du Bout marina quays, steps from where tenders likely land. Listed by the Martinique tourism board, though reviews are only average.",
+    "distance": "On the marina, about 1-2 minutes' walk."
+   }
+  ],
+  "contacts": {
+   "emergency": "112 (EU-wide). SAMU medical 15, police 17, fire 18.",
+   "hospital": {
+    "name": "CHU de Martinique, Hôpital Pierre Zobda-Quitman (main emergency department)",
+    "town": "La Meynard, Fort-de-France (across the bay, roughly 30-45 minutes by road)",
+    "phone": "+596 596 55 20 00 (dialed locally as 0596 55 20 00)"
+   },
+   "us_embassy": {
+    "name": "U.S. Embassy Bridgetown (covers Martinique and the other French Antilles)",
+    "city": "Bridgetown, Barbados (Wildey Business Park, St. Michael)",
+    "phone": "+1 246 227 4000 (US-citizen emergencies), main switchboard +1 246 227 4399",
+    "email": "BridgetownACS@state.gov",
+    "url": "https://bb.usembassy.gov/",
+    "note": "Older State Dept pages list a U.S. Consular Agent in Fort-de-France (Hotel Valmenière, Avenue des Arawaks). Its current status isn't confirmed."
+   }
+  },
+  "sources": [
+   "https://www.Seabourn.com/content/dam/sbn/marketing-assets/documents/sbn-tender-ports.pdf",
+   "https://seabourn.com/en/us/cruise-destinations/caribbean-cruises/caribbean-ports/trois-ilets-martinique-tr2",
+   "https://current.seabourn.com/article/discover-seabourns-uncommon-caribbean",
+   "https://martinique.org/en/cruise/stopover/les-trois-ilets",
+   "https://www.martinique.org/en/trips/stopover-pointe-du-bout",
+   "https://en.martinique-tour.com/offres/org-blue-lines-fort-de-france-1398443/",
+   "https://www.frommers.com/destinations/martinique/planning-a-trip/getting-around",
+   "https://montransport.com/annuaire/taxi-minivan/martinique/index.html",
+   "https://www.tripadvisor.com/Attraction_Review-g147329-d149228-Reviews-Pointe_du_Bout_Beach-Trois_Ilets_Arrondissement_of_Le_Marin_Martinique.html",
+   "https://wanderlog.com/place/details/2804690/le-ti-taurus",
+   "https://www.martinique.org/en/bars-restaurants/restaurants/restaurant-la-marine-pizzeria-bar-glacier",
+   "https://www.hopital.fr/index.php/annuaire-etablissement/hopital-pierre-zobda-quitman-fort-de-france,1385",
+   "https://travel.state.gov/content/travel/en/resourcesold/csi/embassy-and-consulate-lists/FrenchWestIndies.html",
+   "https://www.osac.gov/Country/Barbados/Content/Detail/Report/52105c97-e9a3-4253-91a4-2754b7c2d075"
+  ],
+  "unverified": [
+   "The exact Seabourn tender landing point is unconfirmed. Pointe du Bout marina is the most likely, but it could be the Trois-Îlets bourg pier. Check the Seabourn Herald onboard.",
+   "Ferry fares are 'from €5/€7' and subject to change, and the ferry frequency on a weekday in January isn't confirmed.",
+   "Taxi figures are estimates, not an official tariff.",
+   "Drive time to the CHU is an estimate.",
+   "Whether the Fort-de-France U.S. consular agency is still operating is unconfirmed.",
+   "I couldn't confirm current 2025-26 hours for Le Ti Taurus or La Marine. Le Pitaya at La Pagerie hotel was considered but may be dinner-only."
+  ]
+ },
+ "bequia": {
+  "port": "Port Elizabeth, Bequia, St. Vincent & the Grenadines",
+  "date": "2027-01-21",
+  "hours": "8am-5pm",
+  "tender": true,
+  "landing": "The ship anchors in Admiralty Bay, and tenders land at the main jetty in the centre of Port Elizabeth, where there's a tourist information booth.",
+  "to_town": "You step straight into town, with shops, cafés and the waterfront Belmont Walkway right at the jetty. Princess Margaret Beach is about a 15-30 minute walk along the Belmont Walkway and coastal path, or a short water-taxi or taxi ride.",
+  "taxi": {
+   "summary": "Taxis are open-air pickup trucks or vans. Rates are fixed by the Bequia Tourism Association, and the rate card is at the BTA office by the jetty. Prices may be quoted in EC$ (about 2.7 EC$ per US$), so confirm the currency.",
+   "fares": [
+    "Port Elizabeth to Princess Margaret Beach or Lower Bay: a short ride. One blog cites about EC$8 (about US$3) per person, but it's undated. Confirm on the BTA rate card.",
+    "Island tour by taxi: about $30 per hour (undated cruise-port guide, currency not stated).",
+    "Water taxi to Princess Margaret Beach: a few dollars per person. One source cites about $7 for several people in a boat."
+   ],
+   "basis": "Fixed by the Bequia Tourism Association. Whether a fare is per person or per vehicle isn't confirmed, so ask before you ride.",
+   "source_year": "Undated or older sources (2017-2019 guides). No 2025 official rate found."
+  },
+  "walkability": "Excellent for a small island. The Belmont Walkway runs south from the jetty along the bay, past cafés, bars and small hotels, toward Princess Margaret Beach. Parts are narrow, sandy or uneven, and the last stretch to the beach includes steps and a hill.",
+  "accessibility": "Town is right at the jetty and the main waterfront is fairly flat, but the walkway gets uneven and the beach path has steps. Limited-mobility travelers should take a taxi to Princess Margaret or Lower Bay.",
+  "lunch": [
+   {
+    "name": "Frangipani Hotel restaurant and bar",
+    "why": "A Bequia institution right on the Belmont Walkway, serving Caribbean food with harbour views. Seabourn's port page mentions it, and Fodor's calls its waterfront bar the island's favourite gathering spot.",
+    "distance": "About a 5-minute walk south of the jetty along the Belmont Walkway."
+   },
+   {
+    "name": "Jack's Beach Bar",
+    "why": "Barefoot lunch on Princess Margaret Beach with seafood, frozen drinks and lobster mac and cheese. Linked to the Bequia Beach Hotel (+1 784 458 3809, jacksbeachbar.com).",
+    "distance": "On Princess Margaret Beach, about 15-30 minutes on foot via the Belmont Walkway, or a short taxi or water taxi."
+   }
+  ],
+  "contacts": {
+   "emergency": "911 or 999 (police, fire, ambulance). 911 for ambulance, per UK government advice.",
+   "hospital": {
+    "name": "Port Elizabeth Hospital / Health Complex (Bequia's casualty hospital). Serious cases go to the main hospital in Kingstown, St. Vincent, or are evacuated.",
+    "town": "Port Elizabeth, Bequia (walking or short taxi distance from the jetty)",
+    "phone": "+1 784 458 3294 (Bequia medical line per Government of Canada; Ministry of Health lists ext. 4289). Kingstown medical/A&E: +1 784 456 1955."
+   },
+   "us_embassy": {
+    "name": "U.S. Embassy Bridgetown (covers St. Vincent & the Grenadines)",
+    "city": "Bridgetown, Barbados (Wildey Business Park, St. Michael)",
+    "phone": "+1 246 227 4000 (US-citizen emergencies), main switchboard +1 246 227 4399",
+    "email": "BridgetownACS@state.gov",
+    "url": "https://bb.usembassy.gov/"
+   }
+  },
+  "sources": [
+   "https://www.seabourn.com/en/cruise-destinations/caribbean-cruises/caribbean-ports/port-elizabeth-bequia-st-vincent-and-the-grenadines-bqu",
+   "https://www.cruisecritic.com/find-a-cruise/port-bequia",
+   "https://www.whatsinport.com/Bequia.htm",
+   "https://www.fodors.com/world/caribbean/st-vincent-and-the-grenadines/places/bequia/restaurants",
+   "https://tripexpert.com/st-vincent-grenadines/restaurants/frangipani-restaurant-and-dining",
+   "https://wanderlog.com/place/details/2805091/jacks-beach-bar",
+   "https://www.uncommoncaribbean.com/?p=20559",
+   "https://www.gov.uk/foreign-travel-advice/st-vincent-and-the-grenadines/health",
+   "https://travel.gc.ca/destinations/saint-vincent-the-grenadines",
+   "https://health.gov.vc/health/index.php/administration/contact-information",
+   "https://www.osac.gov/Country/Barbados/Content/Detail/Report/52105c97-e9a3-4253-91a4-2754b7c2d075"
+  ],
+  "unverified": [
+   "No current 2025-26 Bequia taxi rate card was found. The fares shown are old or undated estimates, so check the BTA board at the jetty.",
+   "Whether fares are per person or per vehicle isn't confirmed.",
+   "I couldn't confirm 2025-26 hours or opening for Frangipani and Jack's Beach Bar. Both are long-running and listed on current sites. Jack's has sometimes closed in low season.",
+   "The Walkway details (steps, uneven sections) come from general guides, not an official accessibility survey.",
+   "The name of the main Kingstown hospital (Milton Cato Memorial Hospital) wasn't confirmed by these sources, so only the Kingstown A&E line is given."
+  ]
+ },
+ "grenada": {
+  "port": "St. George's, Grenada",
+  "date": "2027-01-22",
+  "hours": "8am-6pm",
+  "tender": false,
+  "landing": "The ship docks at the Melville Street Cruise Terminal on the edge of downtown St. George's, with the Esplanade Mall and bus terminal next door.",
+  "to_town": "Downtown is right outside the terminal, and the Carenage waterfront is under 10 minutes' walk, via the Sendall Tunnel or over the hill. Grand Anse Beach is about 10-25 minutes by taxi, or a short water-taxi ride.",
+  "taxi": {
+   "summary": "Taxis follow a set rate card. Ask to see it, and use the dispatcher at the terminal. US$ and EC$ are both accepted (about 2.7 EC$ to US$1).",
+   "fares": [
+    "Cruise terminal to Grand Anse Beach by taxi: about EC$50 (about US$18-20) by day and EC$70 at night, per several 2024-2026 guides. Some guides quote this per person and some per car, so confirm.",
+    "Water taxi from the cruise terminal or Carenage to Grand Anse: about US$5 per person each way (2025-2026 cruise guides).",
+    "Local minibus #1 to Grand Anse: about EC$2.50-3 (about US$1) per person. Cheap but crowded."
+   ],
+   "basis": "Set rates. Sources disagree on per person vs per car, so ask the dispatcher before you ride.",
+   "source_year": "2024-2026 third-party cruise guides. No official government fare sheet was found."
+  },
+  "walkability": "Compact but hilly. The Carenage, the market and the Esplanade are close, but Fort George and the upper town mean steep climbs and steps. The Sendall Tunnel is narrow and dim, with uneven pavement and sometimes cars.",
+  "accessibility": "The terminal and Carenage waterfront are manageable, but much of St. George's is steep with steps and uneven sidewalks. Limited-mobility travelers should take a taxi tour or a ship excursion that starts at the terminal.",
+  "lunch": [
+   {
+    "name": "BB's Crabback",
+    "why": "Fodor's calls it 'the place to go for lunch' downtown. Grenadian and West Indian dishes (callaloo soup, curried goat, crab back) on a breezy terrace over the Carenage. Service can be slow, so allow time.",
+    "distance": "On the north side of the Carenage (Otway House), about 10 minutes' walk from the terminal. Phone +1 473 435 7058."
+   },
+   {
+    "name": "Creole Shack",
+    "why": "Popular, good-value local buffet of Grenadian staples like macaroni pie, ground provisions, stewed meats and fresh juices. A quick, authentic taste of local cooking.",
+    "distance": "Near the cruise and bus terminal on the Carenage side, about 5 minutes' walk (above Andall's grocery)."
+   }
+  ],
+  "contacts": {
+   "emergency": "911 (police and fire). Ambulance in St. George's: 434.",
+   "hospital": {
+    "name": "General Hospital (Grenada General Hospital)",
+    "town": "St. George's (a few minutes by taxi from the terminal)",
+    "phone": "+1 473 440 2051"
+   },
+   "us_embassy": {
+    "name": "U.S. Embassy St. George's, Grenada (has its own American Citizen Services)",
+    "city": "St. George's, Grenada (L'Anse aux Epines Main Road)",
+    "phone": "+1 473 444 1173 (main), after-hours emergency +1 473 407 2495",
+    "email": "StgeorgesACS@state.gov",
+    "url": "https://gd.usembassy.gov/"
+   }
+  },
+  "sources": [
+   "https://bucketlistguides.com/grenada-st-georges-cruise-port-guide/",
+   "https://www.profmelissa.com/blog/grenada",
+   "https://www.travelwithhello.com/blog/grenada-transport-guide",
+   "https://www.cruisecritic.com/find-a-cruise/port-grenada",
+   "https://www.celebritycruises.com/ports/grenada",
+   "https://en.wikivoyage.org/wiki/St._George%27s",
+   "https://www.fodors.com/world/caribbean/grenada/restaurants",
+   "https://www.theculturetrip.com/caribbean/grenada/articles/the-best-restaurants-in-grenada",
+   "https://wanderlog.com/place/details/2032248/bbs-crab-back",
+   "https://www.happycow.net/reviews/creole-shack-st-georges-76688",
+   "https://www.gov.uk/government/publications/grenada-list-of-medical-facilities-practitioners/grenada-medical-facilities",
+   "https://www.gov.uk/foreign-travel-advice/grenada/getting-help",
+   "https://travel.state.gov/content/travel/en/resourcesold/csi/us-embassies/grenada.html",
+   "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Grenada.html"
+  ],
+  "unverified": [
+   "Taxi fares come from third-party guides that conflict on per person vs per car. No official Grenada fare sheet for the cruise terminal was found.",
+   "The water-taxi price (about US$5 per person) depends on the operator and the weather.",
+   "I couldn't confirm 2025-26 hours for BB's Crabback and Creole Shack. Both have recent listings, but the Creole Shack location is described slightly differently across sources.",
+   "The embassy website (gd.usembassy.gov) couldn't be reached from this session, so the phone numbers come from State Dept travel pages. The main line also appears as 444-1174/1175 in some listings."
+  ]
+ }
+}
