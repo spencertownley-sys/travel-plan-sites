@@ -8,6 +8,11 @@ const { chromium } = require('playwright');
   const p = await b.newPage();
   await p.goto('file://' + path.join(root, 'index.html'), { waitUntil: 'load' });
   await p.evaluate(() => { document.documentElement.setAttribute('data-theme', 'light'); document.querySelectorAll('details').forEach(d => { if (!d.classList.contains('src')) d.open = true; }); });
+  await p.evaluate(async () => {
+    const imgs = [...document.querySelectorAll('img')];
+    imgs.forEach(i => { i.loading = 'eager'; i.srcset = ''; i.src = i.src.replace('-1400.jpg', '-700.jpg'); });
+    await Promise.all(imgs.map(i => i.complete ? null : new Promise(r => { i.onload = i.onerror = r; })));
+  });
   await p.evaluate(() => document.fonts.ready);
   await p.emulateMedia({ media: 'print' });
   await p.waitForTimeout(500);
