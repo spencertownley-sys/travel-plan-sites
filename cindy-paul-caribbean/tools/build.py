@@ -150,6 +150,7 @@ def route_map(sec, highlight=None):
         if k not in order:
             order.append(k)
     legend = ['<ol class="legend">']
+    inset_marks = []
     for i, k in enumerate(order, 1):
         name = trip.PORTS[k][0]
         x, y = coords[k]
@@ -157,11 +158,19 @@ def route_map(sec, highlight=None):
         when = " & ".join(short_date(d["date"])[4:] for d in days)
         nums = "·".join(str(d["cruise_day"]) for d in days if d["cruise_day"])
         tx, anchor = label_attrs(x, y, pr.w, r)
-        if k == "jvd":
-            tx, anchor = x - 50, "start"
-        elif k == "stkitts":
+        if k in INSET_PORTS:
+            # shown with labels in the British Virgin Islands inset instead
+            out.append(f'<g class="mk lab" tabindex="0" role="button" aria-label="{e(name)}" data-pt="{sec}-{i}">'
+                       f'<circle class="dot" cx="{x:.1f}" cy="{y:.1f}" r="{r*0.55:.1f}"/></g>')
+            inset_marks.append((k, i, name, when))
+            isl = next((x for x in trip.ISLANDS if x["id"] == k), None)
+            lat, lon = trip.PORTS[k][1], trip.PORTS[k][2]
+            legend.append(f'<li tabindex="0" role="button" data-pt="{sec}-{i}" data-desc="{e(isl["blurb"] if isl else "")}" data-gm="{gmaps(lat, lon)}">'
+                          f'<span class="n">{e(nums)}</span><span><b>{e(name)}</b><small>{e(when)}</small></span></li>')
+            continue
+        if k == "stkitts":
             tx, anchor = x - r - 6, "end"
-        dy = {"jvd": -34, "tortola": 22, "montserrat": 10, "antigua": -8}.get(k, 0)
+        dy = {"montserrat": 10, "antigua": -8}.get(k, 0)
         out.append(f'<g class="mk lab" tabindex="0" role="button" aria-label="{e(name)}" data-pt="{sec}-{i}">'
                    f'<circle class="dot" cx="{x:.1f}" cy="{y:.1f}" r="{r*0.7:.1f}"/>'
                    f'<text class="lab" x="{tx:.1f}" y="{y + 9 + dy:.1f}" text-anchor="{anchor}">{e(name)}</text>'
@@ -172,8 +181,39 @@ def route_map(sec, highlight=None):
         legend.append(f'<li tabindex="0" role="button" data-pt="{sec}-{i}" data-desc="{e(desc)}" data-gm="{gmaps(lat, lon)}">'
                       f'<span class="n">{e(nums) if nums else "⚓"}</span><span><b>{e(name)}</b><small>{e(when)}</small></span></li>')
     legend.append("</ol>")
+    out.append(bvi_inset(sec, pr, inset_marks))
     out.append(SVG_CLOSE)
     return "".join(out), "".join(legend)
+
+
+INSET_PORTS = ("jvd", "tortola")
+
+
+def bvi_inset(sec, pr, marks):
+    """Zoomed-in box for Jost Van Dyke and Tortola, whose dots overlap on the route map."""
+    ip = Proj("bvi")
+    s_, w_, n_, e_ = trip.MAPS["bvi"]["bbox"]
+    ax0, ay0 = pr(n_, w_)
+    ax1, ay1 = pr(s_, e_)
+    X, Y, W = 24, 440, 380
+    k = W / ip.w
+    H = ip.h * k
+    o = [f'<rect class="inset-area" x="{ax0:.1f}" y="{ay0:.1f}" width="{ax1-ax0:.1f}" height="{ay1-ay0:.1f}"/>',
+         f'<path class="inset-lead" d="M{(ax0+ax1)/2:.1f},{ay1:.1f} L{X + W/2:.1f},{Y:.1f}"/>',
+         f'<g class="inset"><rect class="inset-bg" x="{X-4}" y="{Y-4}" width="{W+8}" height="{H+8:.1f}" rx="8"/>',
+         f'<image href="maps/bvi.jpg" x="{X}" y="{Y}" width="{W}" height="{H:.1f}"/>',
+         f'<text class="inset-t" x="{X+12}" y="{Y+H-14:.1f}">British Virgin Islands</text>']
+    for key, i, name, when in marks:
+        lat, lon = trip.PORTS[key][1], trip.PORTS[key][2]
+        x, y = ip(lat, lon)
+        x, y = X + x * k, Y + y * k
+        tx, ty = (x + 18, y + 2) if key == "jvd" else (x + 18, y + 26)
+        o.append(f'<g class="mk lab" tabindex="0" role="button" aria-label="{e(name)}" data-pt="{sec}-{i}">'
+                 f'<circle class="dot" cx="{x:.1f}" cy="{y:.1f}" r="12"/>'
+                 f'<text class="lab" x="{tx:.1f}" y="{ty:.1f}" text-anchor="start">{e(name)}</text>'
+                 f'<text class="lab2" x="{tx:.1f}" y="{ty + 24:.1f}" text-anchor="start">{e(when)}</text></g>')
+    o.append("</g>")
+    return "".join(o)
 
 
 AIRPORT_LABEL = {"sea": "Seattle", "atl": "Atlanta", "bgi_air": "Barbados"}
@@ -260,6 +300,9 @@ def view_itinerary():
              f'<div><b>{len(sea)} sea days</b><span>Jan 11 and Jan 19</span></div>'
              '<div><b>2 nights</b><span>Atlanta airport</span></div>'
              '</div>')
+    h.append('<div class="cal"><a class="btn" href="trip.ics" download>📅 Add the trip to your calendar</a>'
+             '<span>Adds the flights, every port day with ship times, and the booked excursions. '
+             'On iPhone, tap it and choose Add All; on a computer, open the downloaded file.</span></div>')
     h.append(live_map_block())
     groups = [("Getting there", lambda d: d["date"] <= "2027-01-08"),
               ("On the ship", lambda d: "2027-01-09" <= d["date"] <= "2027-01-22"),
@@ -271,7 +314,7 @@ def view_itinerary():
         for d in rows:
             plan = d["summary"]
             booked = [it for it in d["items"] if it[1].startswith("Booked:")]
-            tag = '<em class="tag bk">Booked</em>' if booked else ('<em class="tag sea">Sea day</em>' if d["kind"] == "sea" else
+            tag = '<em class="tag bk">Booked</em>' if booked else ('<em class="tag atsea">Sea day</em>' if d["kind"] == "sea" else
                    ('<em class="tag open">Open</em>' if d.get("ideas") and d["kind"] == "port" else ""))
             hours = d.get("hours", "")
             if d.get("tender"):
@@ -427,7 +470,7 @@ def view_ship():
 def view_todo():
     h = ['<div class="view" id="v-todo">']
     total = sum(len(g["items"]) for g in trip.TODO)
-    h.append(f'<p class="blurb">Planning tasks from the sheet\'s Actions tab, plus loose ends spotted while building this site. '
+    h.append(f'<p class="blurb">Planning tasks from the sheet\'s Actions tab, plus loose ends spotted while building this site. Costs are on the Budget tab. '
              f'Ticks are saved in this browser only. <span class="progress" data-total="{total}"></span></p>')
     for g in trip.TODO:
         pre = g["group"].startswith("Done earlier")
@@ -451,43 +494,270 @@ def view_todo():
             h.append(f'<li{due}><label><input type="checkbox" data-id="{it["id"]}"{" data-default=1" if pre else ""}>'
                      f'<span><b>{e(it["text"])}</b>{m}</span>{amt}</label></li>')
         h.append("</ul></section>")
-    # costs
-    total_cost = sum(c[2] for c in trip.COSTS)
-    h.append('<section><h2>Bookings and costs</h2><p class="blurb">From the sheet\'s Costs tab, plus excursion prices from the itinerary tab.</p>')
-    h.append('<div class="days costs"><div class="day head"><span>What</span><span>Item</span><span>Cost</span><span>Notes</span></div>')
-    for cat, item, amt, note in trip.COSTS:
-        h.append(f'<div class="day"><span class="d">{e(cat)}</span><span data-k="Item">{e(item)}</span>'
-                 f'<span class="num" data-k="Cost">${amt:,.2f}</span><span data-k="Notes">{e(note)}</span></div>')
-    h.append(f'<div class="day total"><span class="d">Total</span><span></span><span class="num">${total_cost:,.2f}</span><span></span></div></div></section>')
     h.append("</div>")
     return "".join(h)
+
+
+STATUS = {"paid": ("Paid", "bk"), "booked": ("Booked", "atsea"), "planned": ("Planned", "open"),
+          "estimate": ("Estimate", "est"), "cash": ("Cash on the day", "cash")}
+
+
+def money(x):
+    return f"${x:,.0f}" if abs(x - round(x)) < 0.005 else f"${x:,.2f}"
+
+
+def view_budget():
+    costs = trip.COSTS
+    total = sum(c[2] for c in costs)
+    paid = sum(c[2] for c in costs if c[3] == "paid")
+    cash = sum(c[2] for c in costs if c[3] == "cash")
+    extras = sum(x[2] for x in trip.EXTRAS)
+    h = ['<div class="view" id="v-budget">']
+    h.append('<p class="blurb" style="margin-top:22px">What the trip costs, from the planning sheet. Totals only: no card details. '
+             'Onboard dining, drinks and tips are included in the cruise fare.</p>')
+    h.append('<div class="stays">'
+             f'<div><b>{money(total)}</b><span>planned trip cost</span></div>'
+             f'<div><b>{money(paid)}</b><span>paid so far</span></div>'
+             f'<div><b>{money(total - paid)}</b><span>still to pay</span></div>'
+             f'<div><b>{money(cash)}</b><span>cash to carry ashore</span></div>'
+             f'<div><b>≈ {money(extras)}</b><span>extras allowance (not in total)</span></div></div>')
+    # by category
+    cats = {}
+    for c in costs:
+        cats.setdefault(c[0], [0, 0])
+        cats[c[0]][0] += c[2]
+        if c[3] == "paid":
+            cats[c[0]][1] += c[2]
+    order = sorted(cats.items(), key=lambda kv: -kv[1][0])
+    mx = order[0][1][0]
+    h.append('<section><h2>Where the money goes</h2><p class="blurb">Darker part of each bar is already paid.</p><div class="bars">')
+    for cat, (amt, pd) in order:
+        w = max(amt / mx * 100, 0.8)
+        pw = pd / amt * 100 if amt else 0
+        h.append(f'<div class="bar"><span class="bl">{e(cat)}</span><span class="bt" style="--w:{w:.2f}%">'
+                 f'<i style="width:{pw:.1f}%"></i></span><span class="bv">{money(amt)}</span></div>')
+    h.append("</div></section>")
+    # items
+    h.append('<section><h2>Every item</h2><div class="days costs"><div class="day head"><span>What</span><span>Item</span><span>Cost</span><span>Status</span></div>')
+    for cat, item, amt, st in costs:
+        lab, cls = STATUS[st]
+        h.append(f'<div class="day"><span class="d">{e(cat)}</span><span data-k="Item">{e(item)}</span>'
+                 f'<span class="num" data-k="Cost">{money(amt)}</span><span data-k="Status"><em class="tag {cls}">{e(lab)}</em></span></div>')
+    h.append(f'<div class="day total"><span class="d">Total</span><span></span><span class="num">{money(total)}</span><span></span></div></div></section>')
+    # extras
+    h.append('<section><h2>Extras allowance</h2><p class="blurb">Rough amounts for things that aren\'t planned yet. Not included in the total above.</p>'
+             '<div class="days costs extras"><div class="day head"><span>What</span><span>Why</span><span>About</span><span></span></div>')
+    for name, why, amt in trip.EXTRAS:
+        h.append(f'<div class="day"><span class="d">{e(name)}</span><span data-k="Why">{e(why)}</span><span class="num" data-k="About">≈ {money(amt)}</span><span></span></div>')
+    for name, why in trip.OPTIONAL:
+        h.append(f'<div class="day"><span class="d">{e(name)}</span><span data-k="Why">{e(why)}</span><span class="num" data-k="About">optional</span><span></span></div>')
+    h.append(f'<div class="day total"><span class="d">Allowance</span><span></span><span class="num">≈ {money(extras)}</span><span></span></div></div></section>')
+    # currency
+    rows = [5, 10, 20, 50, 100]
+    h.append('<section><h2>Money ashore</h2><p class="blurb">US dollars work almost everywhere except Martinique. '
+             'Two currencies are fixed to the dollar, so this table never changes. Small US bills are handy for tips and taxis.</p>'
+             '<div class="days fx"><div class="day head"><span>US dollars</span><span>EC dollars (XCD)</span><span>Barbados dollars (BBD)</span></div>')
+    for r in rows:
+        h.append(f'<div class="day"><span class="d">${r}</span><span class="num" data-k="EC dollars">EC${r*2.7:,.2f}</span><span class="num" data-k="Barbados dollars">BDS${r*2:,.0f}</span></div>')
+    h.append('</div><ul class="hl" style="margin-top:12px">'
+             '<li><b>EC dollar</b> (St. Lucia, Montserrat, Antigua, St. Kitts & Nevis, Bequia, Grenada): fixed at 2.70 per US$1. Change often comes back in EC dollars.</li>'
+             '<li><b>Barbados dollar</b>: fixed at 2 per US$1.</li>'
+             '<li><b>US dollar</b>: the currency in the British Virgin Islands; widely used in Sint Maarten.</li>'
+             '<li><b>Euro</b> (Martinique, French St. Martin): the rate moves daily, so check a banking app. Cards work well; bring a few euros for small purchases.</li>'
+             '</ul></section>')
+    h.append("</div>")
+    return "".join(h)
+
+
+# ---------------------------------------------------------------- calendar (.ics)
+SITE_URL = "https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-caribbean/"
+TZ = {"PT": -8, "ET": -5, "AST": -4}
+
+
+def parse_time(t):
+    m = re.match(r"(\d{1,2})(?::(\d{2}))?\s*(am|pm)", t.strip(), re.I)
+    if not m:
+        return None
+    hh, mm, ap = int(m.group(1)), int(m.group(2) or 0), m.group(3).lower()
+    if ap == "pm" and hh != 12:
+        hh += 12
+    if ap == "am" and hh == 12:
+        hh = 0
+    return hh, mm
+
+
+def ics_time(date, hm, tz):
+    d = dt.datetime.fromisoformat(date).replace(hour=hm[0], minute=hm[1]) - dt.timedelta(hours=TZ[tz])
+    return d.strftime("%Y%m%dT%H%M%SZ")
+
+
+def ics_escape(t):
+    return t.replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,").replace("\n", "\\n")
+
+
+FLIGHTS = [  # (date, from tz, dep, arr date, to tz, arr, title)
+    ("2027-01-07", "PT", "9:10am", "2027-01-07", "ET", "4:49pm", "Alaska 334 Seattle → Atlanta"),
+    ("2027-01-08", "ET", "9:41am", "2027-01-08", "AST", "3:20pm", "Delta 1985 Atlanta → Barbados"),
+    ("2027-01-23", "AST", "4:30pm", "2027-01-23", "ET", "8:50pm", "Delta 1984 Barbados → Atlanta"),
+    ("2027-01-24", "ET", "7:00am", "2027-01-24", "PT", "9:41am", "Alaska 348 Atlanta → Seattle"),
+]
+
+
+def fold(line):
+    """iCalendar lines must be at most 75 bytes; continue longer ones on lines starting with a space."""
+    out, cur = [], b""
+    for ch in line:
+        c = ch.encode("utf-8")
+        if len(cur) + len(c) > (75 if not out else 74):
+            out.append(cur.decode("utf-8"))
+            cur = b""
+        cur += c
+    out.append(cur.decode("utf-8"))
+    return "\r\n ".join(out)
+
+
+def write_ics():
+    stamp = dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    ev = []
+
+    def add(uid, summary, start, end, desc="", allday=False, url=None):
+        lines = ["BEGIN:VEVENT", f"UID:{uid}@cindy-paul-caribbean", f"DTSTAMP:{stamp}"]
+        if allday:
+            lines += [f"DTSTART;VALUE=DATE:{start}", f"DTEND;VALUE=DATE:{end}"]
+        else:
+            lines += [f"DTSTART:{start}", f"DTEND:{end}"]
+        lines.append("SUMMARY:" + ics_escape(summary))
+        if desc:
+            lines.append("DESCRIPTION:" + ics_escape(desc))
+        if url:
+            lines.append("URL:" + url)
+        lines.append("END:VEVENT")
+        ev.append("\r\n".join(fold(x) for x in lines))
+
+    for i, (d1, z1, t1, d2, z2, t2, title) in enumerate(FLIGHTS):
+        add(f"flight{i}", "✈ " + title, ics_time(d1, parse_time(t1), z1), ics_time(d2, parse_time(t2), z2),
+            "Local times: departs " + t1 + " " + z1 + ", lands " + t2 + " " + z2 + ".")
+    for d in trip.DAYS:
+        url = SITE_URL + "#" + day_id(d)
+        nxt = (date_of(d["date"]) + dt.timedelta(days=1)).strftime("%Y%m%d")
+        label = (f"Cruise day {d['cruise_day']}: " if d["cruise_day"] else "") + d["place"]
+        add("day-" + d["date"], label, d["date"].replace("-", ""), nxt, d["summary"] + "\nTonight: " + d["stay"] + "\n" + url, True, url)
+        hours = d.get("hours", "")
+        m = re.match(r"(\d.*?[ap]m)\s*[–-]\s*(\d.*?[ap]m)", hours)
+        if d["kind"] == "port" and m:
+            note = "Ashore by tender. " if d.get("tender") else ""
+            add("port-" + d["date"], f"🚢 In port: {d['place']} (all aboard {m.group(2)})",
+                ics_time(d["date"], parse_time(m.group(1)), "AST"), ics_time(d["date"], parse_time(m.group(2)), "AST"),
+                note + "Ship's time (Atlantic, UTC−4).\n" + url, url=url)
+        for j, (t, title, note, cost) in enumerate(d["items"]):
+            if not title.startswith("Booked:"):
+                continue
+            mt = re.match(r"(\d.*?[ap]m)\s*[–-]\s*(\d.*?[ap]m)", t or "")
+            if not mt:
+                continue
+            add(f"x-{d['date']}-{j}", "⭐ " + title[len("Booked:"):].strip(),
+                ics_time(d["date"], parse_time(mt.group(1)), "AST"), ics_time(d["date"], parse_time(mt.group(2)), "AST"),
+                (note or "") + "\n" + url, url=url)
+    body = "\r\n".join(["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Cindy and Paul//Caribbean 2027//EN",
+                         "CALSCALE:GREGORIAN", "METHOD:PUBLISH", "X-WR-CALNAME:Cindy & Paul in the Caribbean"] + ev + ["END:VCALENDAR"]) + "\r\n"
+    with open(os.path.join(ROOT, "trip.ics"), "w", newline="") as f:
+        f.write(body)
+    return len(ev)
 
 
 # ---------------------------------------------------------------- page
 CSS = open(os.path.join(HERE, "site.css")).read()
 LEAFLET_CSS = open(os.path.join(HERE, "vendor", "leaflet.css")).read()
+FONTS_CSS = open(os.path.join(HERE, "fonts.css")).read()
 JS = open(os.path.join(HERE, "site.js")).read()
 
 
+def trip_days_data():
+    return [{"date": d["date"], "place": d["place"], "href": "#" + day_id(d), "n": d["cruise_day"]} for d in trip.DAYS]
+
+
+THEME_BOOT = ("(function(){try{var t=localStorage.getItem('cp-theme');"
+              "if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();")
+
+
 def page():
-    tabs = [("itinerary", "Itinerary"), ("days", "Day by day"), ("maps", "Maps"), ("ship", "The ship"), ("todo", "To do")]
+    tabs = [("itinerary", "Itinerary"), ("days", "Day by day"), ("maps", "Maps"), ("ship", "The ship"), ("budget", "Budget"), ("todo", "To do")]
     return f"""<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Cindy &amp; Paul in the Caribbean</title>
 <meta name="description" content="Cindy and Paul's Exotic Caribbean In Depth cruise on Seabourn Ovation, January 2027: itinerary, day plans, maps, ship guide and planning to-do list.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-<style>{LEAFLET_CSS}</style><style>{CSS}</style></head><body>
-<div class="sea"><div class="sea-in"><p class="eyebrow">January 7 – 24, 2027</p><h1>Cindy &amp; Paul in the Caribbean</h1>
+<meta name="theme-color" content="#0f8f9e">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Cindy &amp; Paul">
+<script>{THEME_BOOT}</script>
+<style>{FONTS_CSS}</style><style>{LEAFLET_CSS}</style><style>{CSS}</style></head><body>
+<div class="sea"><div class="sea-in">
+<div class="mode" role="group" aria-label="Color theme"><button type="button" data-mode="light" aria-pressed="true">☀ Beach</button><button type="button" data-mode="dark" aria-pressed="false">☾ Moonlight</button></div>
+<p class="eyebrow">January 7 – 24, 2027</p><h1>Cindy &amp; Paul in the Caribbean</h1>
 <p class="lede">Cindy and Paul's fourteen nights on Seabourn Ovation, round trip from Barbados: "Exotic Caribbean In Depth," with eleven islands, two sea days and a night in Atlanta each way.</p>
+<div class="today" id="today" hidden></div>
 <a class="sheet" href="{trip.SHEET_URL}">Open the planning sheet in Google Sheets</a></div></div>
 <header><nav class="tabs" aria-label="Sections">{"".join(f'<a href="#{k}" data-tab="{k}">{v}</a>' for k, v in tabs)}</nav></header>
-<main>{view_itinerary()}{view_days()}{view_maps()}{view_ship()}{view_todo()}</main>
+<main>{view_itinerary()}{view_days()}{view_maps()}{view_ship()}{view_budget()}{view_todo()}</main>
 <footer>Planning draft. {e(TODAY_NOTE)}; times, prices and port details may change. Port times are the ship's local time (Atlantic, UTC−4).</footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
-<script>window.TRIP_MAP = {json.dumps(live_map_data(), ensure_ascii=False)};</script>
+<script src="vendor/leaflet.js"></script>
+<script>window.TRIP_MAP = {json.dumps(live_map_data(), ensure_ascii=False)};
+window.TRIP_DAYS = {json.dumps(trip_days_data(), ensure_ascii=False)};</script>
 <script>{JS}</script></body></html>
 """
+
+
+SW_TEMPLATE = """// Generated by tools/build.py. Caches the site so it opens without Wi-Fi.
+const VERSION = "%(version)s";
+const CORE = %(files)s;
+self.addEventListener("install", e => {
+  e.waitUntil(caches.open("site-" + VERSION).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
+});
+self.addEventListener("activate", e => {
+  e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k.startsWith("site-") && k !== "site-" + VERSION).map(k => caches.delete(k)))).then(() => self.clients.claim()));
+});
+self.addEventListener("fetch", e => {
+  const req = e.request;
+  if (req.method !== "GET") return;
+  const url = new URL(req.url);
+  if (url.hostname === "tile.openstreetmap.org") {
+    // map tiles: use a saved copy if we have one, otherwise fetch and keep it (up to ~400 tiles)
+    e.respondWith(caches.open("tiles").then(async c => {
+      const hit = await c.match(req);
+      if (hit) return hit;
+      const res = await fetch(req);
+      if (res.ok) { c.put(req, res.clone()); c.keys().then(k => { if (k.length > 400) c.delete(k[0]); }); }
+      return res;
+    }).catch(() => caches.match(req)));
+    return;
+  }
+  if (url.origin !== location.origin) return;
+  if (req.mode === "navigate") {
+    // the page itself: try the network first so updates show up, fall back to the saved copy offline
+    e.respondWith(fetch(req).then(res => {
+      const copy = res.clone(); caches.open("site-" + VERSION).then(c => c.put("./", copy)); return res;
+    }).catch(() => caches.match("./")));
+    return;
+  }
+  e.respondWith(caches.match(req, { ignoreSearch: true }).then(hit => hit || fetch(req)));
+});
+"""
+
+
+def write_sw():
+    import hashlib
+    files = ["./", "manifest.webmanifest", "trip.ics"]
+    for sub in ("maps", "fonts", "vendor", "icons", "photos"):
+        d = os.path.join(ROOT, sub)
+        if os.path.isdir(d):
+            files += [f"{sub}/{f}" for f in sorted(os.listdir(d)) if not f.endswith(".json")]
+    files = [f for f in files if f == "./" or os.path.exists(os.path.join(ROOT, f))]
+    h = hashlib.sha1()
+    for f in ["index.html"] + files[1:]:
+        with open(os.path.join(ROOT, f), "rb") as fh:
+            h.update(fh.read())
+    with open(os.path.join(ROOT, "sw.js"), "w") as fh:
+        fh.write(SW_TEMPLATE % {"version": h.hexdigest()[:12], "files": json.dumps(files, indent=0)})
 
 
 def fragment():
@@ -501,7 +771,8 @@ def fragment():
 if __name__ == "__main__":
     with open(os.path.join(ROOT, "index.html"), "w") as f:
         f.write(page())
-    print("wrote", os.path.join(ROOT, "index.html"))
+    print("wrote", os.path.join(ROOT, "index.html"), "and", write_ics(), "calendar events")
+    write_sw()
     if len(sys.argv) > 2 and sys.argv[1] == "--artifact":
         with open(sys.argv[2], "w") as f:
             f.write(fragment())

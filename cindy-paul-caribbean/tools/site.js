@@ -3,6 +3,54 @@
   document.querySelectorAll(".view").forEach(function (v) { views[v.id.slice(2)] = v; });
   var dayviews = document.querySelectorAll(".dayview");
 
+  // Beach (light) / Moonlight (dark) switch; Beach is the default, the choice is remembered on this device
+  var root = document.documentElement;
+  function setMode(m, save) {
+    root.setAttribute("data-theme", m);
+    document.querySelectorAll(".mode button").forEach(function (b) {
+      b.setAttribute("aria-pressed", b.getAttribute("data-mode") === m ? "true" : "false");
+    });
+    var tc = document.querySelector('meta[name="theme-color"]');
+    if (tc) tc.setAttribute("content", m === "dark" ? "#073847" : "#0f8f9e");
+    if (save) { try { localStorage.setItem("cp-theme", m); } catch (e) { /* private mode */ } }
+  }
+  setMode(root.getAttribute("data-theme") === "dark" ? "dark" : "light", false);
+  document.querySelectorAll(".mode button").forEach(function (b) {
+    b.addEventListener("click", function () { setMode(b.getAttribute("data-mode"), true); });
+  });
+
+  // countdown before the trip, "today" during it, welcome home after
+  (function () {
+    var box = document.getElementById("today");
+    var days = window.TRIP_DAYS || [];
+    if (!box || !days.length) return;
+    var now = new Date();
+    var iso = now.getFullYear() + "-" + String(now.getMonth() + 1).padStart(2, "0") + "-" + String(now.getDate()).padStart(2, "0");
+    var first = days[0].date, last = days[days.length - 1].date;
+    function el(tag, text) { var x = document.createElement(tag); x.textContent = text; return x; }
+    if (iso < first) {
+      var ms = new Date(first + "T00:00:00") - new Date(iso + "T00:00:00");
+      var n = Math.round(ms / 86400000);
+      box.appendChild(el("b", n === 1 ? "1 day to go" : n + " days to go"));
+      box.appendChild(el("span", "Leaving Seattle on Thursday, January 7"));
+    } else if (iso <= last) {
+      var i = days.findIndex(function (d) { return d.date === iso; });
+      var d = days[i];
+      box.appendChild(el("b", "Today: day " + (i + 1) + " of " + days.length));
+      box.appendChild(el("span", d.place));
+      var a = el("a", "Open today's plan →"); a.href = d.href; box.appendChild(a);
+    } else {
+      box.appendChild(el("b", "Welcome home!"));
+      box.appendChild(el("span", "The trip ran January 7–24, 2027."));
+    }
+    box.hidden = false;
+  })();
+
+  // offline support: cache the site so it opens on the ship without Wi-Fi
+  if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
+    window.addEventListener("load", function () { navigator.serviceWorker.register("sw.js").catch(function () {}); });
+  }
+
   // zoomable route map on the Itinerary tab (Leaflet + OpenStreetMap tiles; the saved route image sits underneath
   // so the map still shows something if tiles can't load, e.g. on ship Wi-Fi)
   var liveMap = null;

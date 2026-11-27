@@ -123,6 +123,7 @@ ROUTE = ["barbados", "stlucia", "montserrat", "antigua", "stkitts", "jvd", "sxm"
 # ---------------------------------------------------------------------------
 MAPS = {
     "route":      {"title": "The cruise", "bbox": (11.75, -65.75, 18.95, -59.05), "maxw": 1300},
+    "bvi":        {"title": "British Virgin Islands", "bbox": (18.300, -64.800, 18.470, -64.585), "maxw": 700},
     "flights":    {"title": "Getting there", "bbox": (10.5, -126.0, 49.5, -56.0), "maxw": 1500},
     "barbados":   {"title": "Barbados", "bbox": (13.03, -59.67, 13.34, -59.41)},
     "bridgetown": {"title": "Bridgetown", "bbox": (13.068, -59.640, 13.108, -59.592)},
@@ -421,12 +422,12 @@ DAYS = [
 # ---------------------------------------------------------------------------
 TODO = [
     {"group": "Coming up", "items": [
-        {"id": "seabourn-pay", "date": "2026-12-01", "who": "", "text": "Pay $12,348 on the Delta card for Seabourn (plus $600 Princess, $500 Celebrity, Delta seat upgrade $107.52 — total $13,555.52)", "amount": "$13,555.52"},
+        {"id": "seabourn-pay", "date": "2026-12-01", "who": "", "text": "Credit card payment due for the Seabourn cruise and other bookings", "amount": None},
         {"id": "sea-adm", "date": "2026-12-01", "who": "", "text": "Travel Tuesday: get SEA–ADM airfare", "amount": None},
-        {"id": "ak-visa", "date": "2026-12-18", "who": "", "text": "Pay Alaska Visa", "amount": "$2,374.64"},
-        {"id": "delta-amex", "date": "2027-01-01", "who": "", "text": "Pay Delta Amex (the sheet shows 1/1/2026 — assumed to mean 2027)", "amount": "$1,580"},
-        {"id": "medical", "date": "2027-01", "who": "", "text": "Purchase annual multi-trip medical insurance", "amount": "$560"},
-        {"id": "princess-bal", "date": "2027-01-29", "who": "", "text": "Princess balance $6,974 due (Delta Amex); Celebrity balance $6,580", "amount": "$13,554"},
+        {"id": "ak-visa", "date": "2026-12-18", "who": "", "text": "Credit card payment due (flights)", "amount": None},
+        {"id": "delta-amex", "date": "2027-01-01", "who": "", "text": "Credit card payment due (the sheet shows 1/1/2026; assumed to mean 2027)", "amount": None},
+        {"id": "medical", "date": "2027-01", "who": "", "text": "Purchase annual multi-trip medical insurance", "amount": None},
+        {"id": "princess-bal", "date": "2027-01-29", "who": "", "text": "Balances due on the other cruises (Princess and Celebrity)", "amount": None},
     ]},
     {"group": "Plan the cruise days", "items": [
         {"id": "excursion-plan", "date": None, "who": "", "text": "Develop plan for Seabourn excursions", "amount": None},
@@ -460,36 +461,51 @@ TODO = [
     {"group": "Done earlier (from the Actions tab)", "items": [
         {"id": "ff", "date": "2026-10-25", "who": "Spencer", "text": "Sign up for friends and family", "amount": None},
         {"id": "form", "date": "2026-10-25", "who": "Spencer", "text": "Submit form for Seabourn cruise", "amount": None},
-        {"id": "princess-dep", "date": "2026-10-27", "who": "Cindy", "text": "Put $600 on Princess (Delta Amex); balance $6,974 due January 29", "amount": "$600"},
+        {"id": "princess-dep", "date": "2026-10-27", "who": "Cindy", "text": "Put a deposit on the Princess cruise", "amount": None},
         {"id": "celebrity", "date": "2026-10-27", "who": "Cindy", "text": "Reserve Celebrity", "amount": None},
         {"id": "med-research", "date": "2026-10-27", "who": "Cindy", "text": "Research medical insurance", "amount": None},
         {"id": "hear-back", "date": "2026-10-30", "who": "", "text": "Hear back on Seabourn", "amount": None},
         {"id": "account", "date": "2026-10-30", "who": "", "text": "Set up Seabourn account", "amount": None},
-        {"id": "pay-seabourn", "date": "2026-10-30", "who": "", "text": "Pay for Seabourn with Delta card", "amount": "$12,348"},
-        {"id": "pay-celebrity", "date": "2026-10-30", "who": "", "text": "Pay for Celebrity with Delta card", "amount": "$500"},
+        {"id": "pay-seabourn", "date": "2026-10-30", "who": "", "text": "Pay for Seabourn", "amount": None},
+        {"id": "pay-celebrity", "date": "2026-10-30", "who": "", "text": "Pay the Celebrity deposit", "amount": None},
         {"id": "flights", "date": "2026-11-10", "who": "", "text": "Book flights SEA–ATL–BGI and hotels in Atlanta and Barbados", "amount": None},
-        {"id": "insurance", "date": "2026-11-10", "who": "", "text": "Select plan and pay for travel insurance", "amount": "$567.10"},
+        {"id": "insurance", "date": "2026-11-10", "who": "", "text": "Select plan and pay for travel insurance", "amount": None},
     ]},
 ]
 
-# Bookings & costs straight from the EC Costs tab (+ excursions from the itinerary).
+# Budget: from the sheet's Costs tab plus excursion prices from the itinerary tab.
+# Totals only on the public site: no card names or card payment dates.
+# status: paid | booked (reserved, pay later) | planned (on the itinerary, not confirmed) | estimate | cash (pay on the day)
 COSTS = [
-    ("Cruise", "Seabourn Ovation, Exotic Caribbean In Depth, Jan 9–23 (14 nights)", 12348.00, "Delta card · due 12/1/2026"),
-    ("Insurance", "Travel insurance", 567.10, "Delta Amex"),
-    ("Flights", "SEA → ATL, Alaska (fees, used miles)", 294.40, "Alaska Visa"),
-    ("Flights", "ATL → BGI and return, Delta (fees, miles, seat upgrades)", 1013.52, "Delta Amex"),
-    ("Hotels", "Atlanta Airport Marriott Gateway, Jan 7", 302.18, "Bonvoy"),
-    ("Hotels", "Hilton Barbados, Jan 8", 487.56, "Hilton Amex"),
-    ("Hotels", "Atlanta Airport Marriott Gateway, Jan 23", 237.83, "Bonvoy"),
-    ("Rides", "To and from Sea-Tac (2 × $120)", 240.00, ""),
-    ("Rides", "Barbados: airport → hotel → ship → airport (3 × $60)", 180.00, ""),
-    ("Excursions", "St. Lucia speedboat, Anse Chastanet & Sugar Beach", 242.60, "$42.60 paid, $200 cash on the day"),
-    ("Excursions", "Antigua mangrove kayak", 360.00, "From the itinerary tab"),
-    ("Excursions", "Nevis getaway (GetYourGuide)", 104.00, "From the itinerary tab"),
-    ("Excursions", "Jost Van Dyke taxi to White Bay", 40.00, "From the itinerary tab"),
-    ("Excursions", "Sint Maarten highlights (Viator)", 130.76, "From the itinerary tab"),
-    ("Excursions", "Norman Island (Seabourn)", 300.00, "From the itinerary tab"),
-    ("Home", "Dog sitting, 19 days × $35", 665.00, ""),
+    ("Cruise", "Seabourn Ovation, Exotic Caribbean In Depth, Jan 9–23 (14 nights)", 12348.00, "paid"),
+    ("Insurance", "Travel insurance", 567.10, "paid"),
+    ("Flights", "Seattle ↔ Atlanta, Alaska (fees; paid with miles)", 294.40, "paid"),
+    ("Flights", "Atlanta ↔ Barbados, Delta (fees, miles and seat upgrades)", 1013.52, "paid"),
+    ("Hotels", "Atlanta Airport Marriott Gateway, Jan 7", 302.18, "booked"),
+    ("Hotels", "Hilton Barbados, Jan 8", 487.56, "booked"),
+    ("Hotels", "Atlanta Airport Marriott Gateway, Jan 23", 237.83, "booked"),
+    ("Rides", "To and from Sea-Tac (2 × $120)", 240.00, "estimate"),
+    ("Rides", "Barbados: airport → hotel → ship → airport (3 × $60)", 180.00, "estimate"),
+    ("Excursions", "St. Lucia speedboat: deposit", 42.60, "paid"),
+    ("Excursions", "St. Lucia speedboat: balance in cash on the day", 200.00, "cash"),
+    ("Excursions", "Antigua mangrove kayak (2 × $180)", 360.00, "planned"),
+    ("Excursions", "Nevis getaway, GetYourGuide", 104.00, "planned"),
+    ("Excursions", "Jost Van Dyke taxi to White Bay", 40.00, "cash"),
+    ("Excursions", "Sint Maarten highlights, Viator (2 × $65.38)", 130.76, "planned"),
+    ("Excursions", "Norman Island, Seabourn", 300.00, "planned"),
+    ("Home", "Dog sitting, 19 days × $35", 665.00, "booked"),
+]
+
+# Not in the totals above: rough allowances for things not yet planned. Clearly labeled as estimates.
+EXTRAS = [
+    ("Excursions on the four open days", "Montserrat, Martinique, Bequia, Grenada; about $100 per person per day", 800.00),
+    ("Tips for local guides and drivers", "Roughly $10–20 per tour (tips onboard are included)", 100.00),
+    ("Taxis on do-it-yourself days", "A few short rides in port", 150.00),
+    ("Lunches ashore and souvenirs", "Lolos in Grand Case, beach bars, spices in Grenada", 300.00),
+]
+OPTIONAL = [
+    ("The Retreat cabana", "About $180 a port day or $349 a sea day"),
+    ("Spa treatments", "Priced onboard"),
 ]
 
 # ---------------------------------------------------------------------------
