@@ -46,6 +46,35 @@
     box.hidden = false;
   })();
 
+  // live forecast for a day, from about 2 weeks out (Open-Meteo, free, no key); averages stay if offline
+  var WX = {0: ["☀️", "Sunny"], 1: ["🌤", "Mostly sunny"], 2: ["⛅", "Partly cloudy"], 3: ["☁️", "Cloudy"], 45: ["🌫", "Fog"], 48: ["🌫", "Fog"],
+    51: ["🌦", "Light drizzle"], 53: ["🌦", "Drizzle"], 55: ["🌧", "Drizzle"], 61: ["🌦", "Light rain"], 63: ["🌧", "Rain"], 65: ["🌧", "Heavy rain"],
+    80: ["🌦", "Passing showers"], 81: ["🌧", "Showers"], 82: ["⛈", "Heavy showers"], 95: ["⛈", "Thunderstorms"], 96: ["⛈", "Thunderstorms"], 99: ["⛈", "Thunderstorms"]};
+  var wxDone = {};
+  function loadForecast(scope) {
+    scope.querySelectorAll(".wx").forEach(function (w) {
+      var date = w.getAttribute("data-date");
+      if (wxDone[date]) return;
+      var days = (new Date(date + "T12:00:00") - new Date()) / 86400000;
+      if (days > 15.5 || days < -1 || navigator.onLine === false) return;
+      wxDone[date] = true;
+      var url = "https://api.open-meteo.com/v1/forecast?latitude=" + w.getAttribute("data-lat") + "&longitude=" + w.getAttribute("data-lon") +
+        "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max" +
+        "&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=auto&start_date=" + date + "&end_date=" + date;
+      fetch(url).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+        if (!j || !j.daily || !j.daily.time || !j.daily.time.length) { wxDone[date] = false; return; }
+        var d = j.daily, code = d.weather_code[0], wx = WX[code] || ["🌤", "Mixed"];
+        var p = w.querySelector(".wx-live");
+        p.textContent = "";
+        var b = document.createElement("b"); b.textContent = "Forecast " + wx[0]; p.appendChild(b);
+        p.appendChild(document.createTextNode(" " + wx[1] + ", " + Math.round(d.temperature_2m_max[0]) + "°F high, " +
+          Math.round(d.temperature_2m_min[0]) + "°F low, " + (d.precipitation_probability_max[0] == null ? "" : d.precipitation_probability_max[0] + "% chance of rain, ") +
+          "wind " + Math.round(d.wind_speed_10m_max[0]) + " mph."));
+        p.hidden = false;
+      }).catch(function () { wxDone[date] = false; });
+    });
+  }
+
   // video cards: load YouTube only when tapped
   document.querySelectorAll(".vid").forEach(function (box) {
     var btn = box.querySelector(".vid-play");
@@ -123,7 +152,7 @@
     }
     if (tab === "itinerary") initLiveMap();
     if (tab === "days") {
-      dayviews.forEach(function (d) { d.hidden = d.id !== day; });
+      dayviews.forEach(function (d) { d.hidden = d.id !== day; if (d.id === day) loadForecast(d); });
       document.querySelectorAll(".chips a").forEach(function (c) {
         var on = c.getAttribute("data-day") === day;
         c.setAttribute("aria-current", on ? "true" : "false");

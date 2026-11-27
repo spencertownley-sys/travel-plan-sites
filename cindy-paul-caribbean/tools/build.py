@@ -20,6 +20,30 @@ META = json.load(open(os.path.join(ROOT, "maps", "meta.json")))
 VIDEOS = json.load(open(os.path.join(HERE, "media", "videos.json")))
 PORTS_INFO = json.load(open(os.path.join(HERE, "media", "ports.json")))  # researched Nov 2026, with sources
 EXCURSIONS = json.load(open(os.path.join(HERE, "media", "excursions.json")))  # open days only
+CLIMATE = json.load(open(os.path.join(HERE, "media", "climate.json")))  # January averages, Open-Meteo
+
+
+def rain_words(pct):
+    if pct >= 55:
+        return f"showers on about {pct}% of days, usually brief"
+    if pct >= 40:
+        return f"a shower on about {pct}% of days, usually brief"
+    return f"mostly dry; a shower on about {pct}% of days"
+
+
+def weather_block(d):
+    """January averages plus a slot the page fills with a live forecast close to the date."""
+    key = d.get("port")
+    if not key and d["kind"] == "sea":
+        key = d["leg"][1]
+    c = CLIMATE.get(key) if key else None
+    if not c:
+        return ""
+    lat, lon = trip.PORTS[key][1], trip.PORTS[key][2]
+    sea = f" · water {c['sea_f']}°F" if c.get("sea_f") else ""
+    return (f'<div class="wx" data-lat="{lat}" data-lon="{lon}" data-date="{d["date"]}">'
+            f'<p class="wx-avg"><b>Typical January day</b> {c["high_f"]}°F high, {c["low_f"]}°F low{sea}; {e(rain_words(c["rain_pct"]))}.</p>'
+            '<p class="wx-live" hidden></p></div>')
 TODO_FOR_PORT = {"montserrat": "plan-montserrat", "martinique": "plan-martinique", "bequia": "plan-bequia", "grenada": "plan-grenada"}
 # which video goes on which day (first visit to each place; the ship tour on the first sea day)
 DAY_VIDEO = {"2027-01-09": "barbados", "2027-01-10": "stlucia", "2027-01-11": "ship", "2027-01-12": "montserrat",
@@ -499,6 +523,7 @@ def render_day(d, i):
         chips.append(("Sun", f"up {rise} · down {sset}"))
     chips.append(("Night", d["stay"]))
     out.append('<dl class="facts">' + "".join(f"<div><dt>{e(k)}</dt><dd>{e(v)}</dd></div>" for k, v in chips) + "</dl>")
+    out.append(weather_block(d))
 
     out.append('<div class="daygrid"><div>')
     out.append('<h3>Schedule</h3><ol class="timeline">')
@@ -529,7 +554,7 @@ def render_day(d, i):
     if d.get("port") and d["kind"] in ("port", "embark"):
         out.append(port_guide(d["port"]))
     if d["date"] in DAY_VIDEO:
-        out.append('<h3>Watch</h3>' + video_card(DAY_VIDEO[d["date"]]))
+        out.append('<section class="watch"><h3>Watch</h3>' + video_card(DAY_VIDEO[d["date"]]) + "</section>")
     for j, spec in enumerate(d.get("maps", [])):
         title = trip.MAPS[spec["map"]]["title"]
         if spec["map"] == "route":
@@ -560,6 +585,9 @@ def view_maps():
     h.append("</section>")
     for isl in trip.ISLANDS:
         facts = [("When", isl["days"]), ("Money", isl["currency"]), ("Language", isl["language"])]
+        cl = CLIMATE.get(isl["id"])
+        if cl:
+            facts.append(("January weather", f"{cl['high_f']}°F / {cl['low_f']}°F" + (f", water {cl['sea_f']}°F" if cl.get("sea_f") else "") + f"; {rain_words(cl['rain_pct'])}"))
         if isl.get("rain"):
             facts.append(("Rain", isl["rain"]))
         extra = ('<dl class="facts col">' + "".join(f"<div><dt>{e(k)}</dt><dd>{e(v)}</dd></div>" for k, v in facts) + "</dl>"
@@ -580,7 +608,7 @@ def view_ship():
     h.append('<section><h2>Seabourn Ovation</h2><p class="blurb">A small, all-suite luxury ship — about 600 guests — '
              'so tenders are quick, the crew learns your name, and most drinks, dining and tips are included.</p>')
     h.append('<div class="stays">' + "".join(f"<div><b>{e(big)}</b><span>{e(cap)}</span></div>" for big, cap in s["facts"]) + "</div></section>")
-    h.append('<section><h2>Take the tour</h2><p class="blurb">Seabourn\'s own video tour of Ovation and her identical sister ship, Encore.</p>' + video_card("ship") + '</section>')
+    h.append('<section class="watch"><h2>Take the tour</h2><p class="blurb">Seabourn\'s own video tour of Ovation and her identical sister ship, Encore.</p>' + video_card("ship") + '</section>')
     h.append(f'<div class="callout caviar"><h4>Caviar in the Surf</h4><p>{e(s["caviar"])}</p></div>')
 
     def deflist(title, rows):
@@ -830,10 +858,10 @@ def page():
 <p class="eyebrow">January 7 – 24, 2027</p><h1>Cindy &amp; Paul in the Caribbean</h1>
 <p class="lede">Cindy and Paul's fourteen nights on Seabourn Ovation, round trip from Barbados: "Exotic Caribbean In Depth," with eleven islands, two sea days and a night in Atlanta each way.</p>
 <div class="today" id="today" hidden></div>
-<a class="sheet" href="{trip.SHEET_URL}">Open the planning sheet in Google Sheets</a></div></div>
+<p class="links"><a class="sheet" href="{trip.SHEET_URL}">Open the planning sheet in Google Sheets</a><a class="sheet pdfdl" href="trip.pdf" download>Download the trip as a PDF</a></p></div></div>
 <header><nav class="tabs" aria-label="Sections">{"".join(f'<a href="#{k}" data-tab="{k}">{v}</a>' for k, v in tabs)}</nav></header>
 <main>{view_itinerary()}{view_days()}{view_maps()}{view_ship()}{view_budget()}{view_todo()}</main>
-<footer>Planning draft. {e(TODAY_NOTE)}; times, prices and port details may change. Port times are the ship's local time (Atlantic, UTC−4).</footer>
+<footer>Planning draft. {e(TODAY_NOTE)}; times, prices and port details may change. Port times are the ship's local time (Atlantic, UTC−4). Weather averages and forecasts from <a href="https://open-meteo.com/">Open-Meteo</a>.</footer>
 <script src="vendor/leaflet.js"></script>
 <script>window.TRIP_MAP = {json.dumps(live_map_data(), ensure_ascii=False)};
 window.TRIP_DAYS = {json.dumps(trip_days_data(), ensure_ascii=False)};</script>

@@ -22,6 +22,7 @@ header,main,footer{max-width:1100px;margin:0 auto;padding-left:max(16px,env(safe
 .sea h1{text-shadow:0 2px 18px rgba(0,40,55,.25)}
 .sea .lede{color:var(--on-sea-2)}
 .sea .sheet{color:var(--on-sea);margin-bottom:0}
+.links{display:flex;flex-wrap:wrap;gap:6px 22px;margin:0}
 .mode{position:absolute;top:0;right:max(16px,env(safe-area-inset-right,0px));display:flex;padding:3px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35)}
 .mode button{font:700 13.5px var(--body);color:var(--on-sea);background:none;border:0;padding:6px 12px;border-radius:999px;cursor:pointer}
 .mode button[aria-pressed="true"]{background:var(--on-sea);color:var(--sea-1)}
@@ -98,6 +99,12 @@ a.day:hover{background:color-mix(in srgb,var(--sea) 7%,var(--card))}
 .callout p{margin:0}.callout ul{margin:0;padding-left:20px}.callout li+li{margin-top:5px}
 .pager{display:flex;justify-content:space-between;gap:10px;margin:30px 0 10px;padding-top:16px;border-top:1px solid var(--line)}
 .pager a{font-weight:700;text-decoration:none;padding:9px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
+
+/* weather */
+.wx{margin:10px 0 4px;max-width:760px}
+.wx p{margin:0 0 6px;padding:9px 13px;border-radius:10px;background:color-mix(in srgb,var(--sea) 9%,var(--card));border:1px solid var(--line);font-size:15.5px}
+.wx b{color:var(--sea);margin-right:4px}
+.wx-live{background:color-mix(in srgb,var(--sun) 12%,var(--card)) !important}
 
 /* excursion comparison */
 .excomp{padding-top:10px}
@@ -251,10 +258,25 @@ footer{padding-block:34px 50px;color:var(--muted);font-size:13.5px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media print{
- .tabs,.sub,.chips,.pager,.hint,.sheet,.info{display:none}
- .view[hidden],.dayview[hidden]{display:block}
- .dayview{break-before:page}
- body{background:#fff;font-size:12pt}
+ @page{size:letter;margin:0.45in 0.5in}
+ html{font-size:15px}
+ body{background:#fff !important;font-size:13.5px}
+ .tabs,.sub,.chips,.pager,.hint,.sheet,.info,.mode,.today,.cal,.livemap,.watch,.pdfdl,.src,#v-maps,#v-todo,.note a[href="#todo"]{display:none !important}
+ .view[hidden],.dayview[hidden]{display:block !important}
+ .sea{padding-bottom:60px;margin-top:0}
+ .sea .lede{max-width:none}
+ h2,h3,h4{break-after:avoid}
+ .dayview{break-before:page;padding-top:0}
+ #v-ship,#v-budget{break-before:page}
+ .days .day,.timeline li,.ex,.lunch>div,dl.ship div,.callout,.wx p,figure.map,.mapwrap{break-inside:avoid}
+ .mapwrap{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:14px}
+ .legend small{-webkit-line-clamp:unset;display:block}
+ .exgrid{grid-template-columns:repeat(3,1fr)}
+ .guide>summary::after{display:none}
+ .stays{grid-template-columns:repeat(3,1fr)}
+ footer{padding-top:16px}
+ a{color:inherit;text-decoration:none}
+}
 }
 
 /* Playfair defaults to old-style figures; use lining figures so dates and counts read evenly */
