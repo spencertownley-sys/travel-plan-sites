@@ -478,10 +478,10 @@ def page():
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <style>{LEAFLET_CSS}</style><style>{CSS}</style></head><body>
-<header><p class="eyebrow">January 7 – 24, 2027</p><h1>Cindy &amp; Paul in the Caribbean</h1>
+<div class="sea"><div class="sea-in"><p class="eyebrow">January 7 – 24, 2027</p><h1>Cindy &amp; Paul in the Caribbean</h1>
 <p class="lede">Cindy and Paul's fourteen nights on Seabourn Ovation, round trip from Barbados: "Exotic Caribbean In Depth," with eleven islands, two sea days and a night in Atlanta each way.</p>
-<a class="sheet" href="{trip.SHEET_URL}">Open the planning sheet in Google Sheets</a>
-<nav class="tabs" aria-label="Sections">{"".join(f'<a href="#{k}" data-tab="{k}">{v}</a>' for k, v in tabs)}</nav></header>
+<a class="sheet" href="{trip.SHEET_URL}">Open the planning sheet in Google Sheets</a></div></div>
+<header><nav class="tabs" aria-label="Sections">{"".join(f'<a href="#{k}" data-tab="{k}">{v}</a>' for k, v in tabs)}</nav></header>
 <main>{view_itinerary()}{view_days()}{view_maps()}{view_ship()}{view_todo()}</main>
 <footer>Planning draft. {e(TODAY_NOTE)}; times, prices and port details may change. Port times are the ship's local time (Atlantic, UTC−4).</footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
