@@ -21,6 +21,24 @@ VIDEOS = json.load(open(os.path.join(HERE, "media", "videos.json")))
 PORTS_INFO = json.load(open(os.path.join(HERE, "media", "ports.json")))  # researched Nov 2026, with sources
 EXCURSIONS = json.load(open(os.path.join(HERE, "media", "excursions.json")))  # open days only
 CLIMATE = json.load(open(os.path.join(HERE, "media", "climate.json")))  # January averages, Open-Meteo
+_pp = os.path.join(HERE, "media", "photos.json")
+PHOTOS = json.load(open(_pp)) if os.path.exists(_pp) else {}  # Wikimedia Commons, with credits
+DAY_PHOTO = {"2027-01-08": "barbados", "2027-01-09": "barbados", "2027-01-10": "stlucia", "2027-01-11": "ship2",
+             "2027-01-12": "montserrat", "2027-01-13": "antigua", "2027-01-14": "nevis", "2027-01-15": "jvd",
+             "2027-01-16": "sxm", "2027-01-17": "tortola", "2027-01-18": "stkitts", "2027-01-19": "ship1",
+             "2027-01-20": "martinique", "2027-01-21": "bequia", "2027-01-22": "grenada", "2027-01-23": "barbados"}
+
+
+def photo(pid, cls="banner", eager=False):
+    m = PHOTOS.get(pid)
+    if not m:
+        return ""
+    lic = f'<a href="{e(m["license_url"])}" target="_blank" rel="noopener">{e(m["license"])}</a>' if m.get("license_url") else e(m.get("license", ""))
+    credit = (f'Photo: <a href="{e(m["page"])}" target="_blank" rel="noopener">{e(m.get("author") or "Wikimedia Commons")}</a>, {lic}')
+    load = "eager" if eager else "lazy"
+    return (f'<figure class="photo {cls}"><img src="photos/{pid}-1400.jpg" srcset="photos/{pid}-700.jpg 700w, photos/{pid}-1400.jpg 1400w" '
+            f'sizes="(max-width: 780px) 100vw, 1100px" alt="{e(m.get("caption") or "")}" loading="{load}" decoding="async">'
+            f'<figcaption><span>{e(m.get("caption") or "")}</span><small>{credit}</small></figcaption></figure>')
 
 
 def rain_words(pct):
@@ -498,6 +516,7 @@ def render_day(d, i):
     if d["cruise_day"]:
         eyebrow += f" · Cruise day {d['cruise_day']} of 15"
     out.append(f'<p class="eyebrow">{e(eyebrow)}</p><h2 class="dayh">{e(d["place"])}</h2>')
+    out.append(photo(DAY_PHOTO.get(d["date"], "")))
     out.append(f'<p class="lede">{e(d["summary"])}</p>')
     chips = []
     if d.get("hours"):
@@ -595,7 +614,7 @@ def view_maps():
         hr = help_rows((PORTS_INFO.get(isl["id"]) or {}).get("contacts") or {})
         if hr:
             extra += '<h4 style="margin-top:16px">If you need help</h4><dl class="facts col help">' + "".join(f"<div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in hr) + "</dl>"
-        h.append(f'<section><h2>{e(isl["name"])}</h2>')
+        h.append(f'<section><h2>{e(isl["name"])}</h2>' + photo(isl["id"], "banner short"))
         h.append(map_block(f"m-{isl['id']}", {"map": isl["map"], "points": isl["points"]}, blurb=isl["blurb"], extra=extra))
         h.append("</section>")
     h.append("</div>")
@@ -605,6 +624,7 @@ def view_maps():
 def view_ship():
     s = trip.SHIP
     h = ['<div class="view" id="v-ship">']
+    h.append(photo("ship1", "banner"))
     h.append('<section><h2>Seabourn Ovation</h2><p class="blurb">A small, all-suite luxury ship — about 600 guests — '
              'so tenders are quick, the crew learns your name, and most drinks, dining and tips are included.</p>')
     h.append('<div class="stays">' + "".join(f"<div><b>{e(big)}</b><span>{e(cap)}</span></div>" for big, cap in s["facts"]) + "</div></section>")
@@ -614,6 +634,7 @@ def view_ship():
     def deflist(title, rows):
         return (f"<section><h2>{e(title)}</h2><dl class='ship'>" +
                 "".join(f"<div><dt>{e(a)}</dt><dd>{e(b)}</dd></div>" for a, b in rows) + "</dl></section>")
+    h.append(photo("ship2", "banner short"))
     h.append(deflist("Where to eat", s["dining"]))
     h.append(f'<p class="note">{e(s["caribbean_new"])}</p>')
     h.append(deflist("Bars, shows and lounges", s["venues"]))
