@@ -508,6 +508,34 @@ def excursion_compare(key):
     return "".join(o)
 
 
+# "Currency today" note at the top of each day page.
+CUR = {
+    "usd_home": ("US dollars", "At home and in Atlanta airport."),
+    "barbados": ("Barbados dollar (BDS$)", "US dollars are taken everywhere at 2 to 1; change usually comes back in Barbados dollars. If a card machine asks, pay in Barbados dollars."),
+    "xcd": ("Eastern Caribbean dollar (EC$)", "US dollars are widely accepted; change often comes back in EC dollars. If a card machine asks, pay in EC dollars."),
+    "usd_bvi": ("US dollar", "It's the local currency in the British Virgin Islands, so there's nothing to convert. Bring small bills for taxis and beach bars."),
+    "sxm": ("US dollars work everywhere", "Officially the guilder on the Dutch side and the euro on the French side, but prices are usually shown in US dollars. On the French side, if a card machine asks, pay in euros."),
+    "martinique": ("Euro (€)", "US dollars are rarely accepted. Use a card (pay in euros if asked) or bring a few euros for small purchases."),
+    "ship": ("No cash needed on board", "Everything goes on your onboard account in US dollars, and tips are included."),
+}
+CUR_FOR_PORT = {"barbados": "barbados", "stlucia": "xcd", "montserrat": "xcd", "antigua": "xcd", "stkitts": "xcd", "jvd": "usd_bvi",
+                "sxm": "sxm", "tortola": "usd_bvi", "martinique": "martinique", "bequia": "xcd", "grenada": "xcd"}
+CUR_FOR_DATE = {"2027-01-07": ["usd_home"], "2027-01-08": ["usd_home", "barbados"], "2027-01-09": ["barbados", "ship"],
+                "2027-01-23": ["barbados", "usd_home"], "2027-01-24": ["usd_home"]}
+
+
+def currency_note(d):
+    keys = CUR_FOR_DATE.get(d["date"])
+    if not keys:
+        keys = ["ship"] if d["kind"] == "sea" else [CUR_FOR_PORT.get(d.get("port"), "xcd")]
+    parts = []
+    for k in keys:
+        title, more = CUR[k]
+        parts.append(f"<b>{e(title)}</b> <span>{e(more)}</span>")
+    return ('<div class="cur-note"><span class="cur-ic" aria-hidden="true">💵</span><div><p class="cur-h">Currency today</p>'
+            + "".join(f"<p>{p}</p>" for p in parts) + '<a href="#money">Money tips →</a></div></div>')
+
+
 def render_day(d, i):
     sid = day_id(d)
     dd = date_of(d["date"])
@@ -516,6 +544,7 @@ def render_day(d, i):
     if d["cruise_day"]:
         eyebrow += f" · Cruise day {d['cruise_day']} of 15"
     out.append(f'<p class="eyebrow">{e(eyebrow)}</p><h2 class="dayh">{e(d["place"])}</h2>')
+    out.append(currency_note(d))
     out.append(photo(DAY_PHOTO.get(d["date"], "")))
     out.append(f'<p class="lede">{e(d["summary"])}</p>')
     chips = []
@@ -526,8 +555,6 @@ def render_day(d, i):
     if d.get("tz"):
         chips.append(("Time zone", d["tz"]))
     isl = next((x for x in trip.ISLANDS if x["id"] == d.get("port")), None)
-    if isl and d["kind"] == "port":
-        chips.append(("Money", isl.get("money") or re.split(r"[.;,]\s", isl["currency"])[0]))
     loc = None
     if d.get("port"):
         p = trip.PORTS[d["port"]]

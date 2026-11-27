@@ -100,6 +100,14 @@ a.day:hover{background:color-mix(in srgb,var(--sea) 7%,var(--card))}
 .pager{display:flex;justify-content:space-between;gap:10px;margin:30px 0 10px;padding-top:16px;border-top:1px solid var(--line)}
 .pager a{font-weight:700;text-decoration:none;padding:9px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
 
+/* currency note at the top of each day */
+.cur-note{display:flex;gap:12px;align-items:flex-start;margin:6px 0 12px;padding:11px 14px;border-radius:12px;
+ background:color-mix(in srgb,var(--ok) 10%,var(--card));border:1px solid color-mix(in srgb,var(--ok) 35%,var(--line))}
+.cur-ic{font-size:22px;line-height:1.2}
+.cur-note p{margin:0 0 3px}.cur-note .cur-h{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ok);margin-bottom:2px}
+.cur-note b{font-weight:700}.cur-note span{color:var(--muted)}
+.cur-note a{font-weight:700;font-size:14.5px}
+
 /* photos */
 figure.photo{margin:14px 0 12px;border-radius:14px;overflow:hidden;background:var(--line);position:relative}
 figure.photo img{display:block;width:100%;aspect-ratio:21/9;object-fit:cover}
