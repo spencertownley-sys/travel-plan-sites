@@ -75,6 +75,18 @@
     });
   }
 
+  // money converter (fixed pegs)
+  var convIn = document.getElementById("conv-usd");
+  if (convIn) {
+    var fmt = function (n) { return n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
+    var pre = { "2.7": "EC$", "2": "Bds$", "1.79": "Cg" };
+    var upd = function () {
+      var v = parseFloat(convIn.value) || 0;
+      document.querySelectorAll(".conv-out b").forEach(function (b) { var r = b.getAttribute("data-rate"); b.textContent = pre[r] + fmt(v * parseFloat(r)); });
+    };
+    convIn.addEventListener("input", upd); upd();
+  }
+
   // video cards: load YouTube only when tapped
   document.querySelectorAll(".vid").forEach(function (box) {
     var btn = box.querySelector(".vid-play");

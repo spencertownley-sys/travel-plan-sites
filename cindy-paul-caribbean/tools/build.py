@@ -514,7 +514,7 @@ CUR = {
     "barbados": ("Barbados dollar (BDS$)", "US dollars are taken everywhere at 2 to 1; change usually comes back in Barbados dollars. If a card machine asks, pay in Barbados dollars."),
     "xcd": ("Eastern Caribbean dollar (EC$)", "US dollars are widely accepted; change often comes back in EC dollars. If a card machine asks, pay in EC dollars."),
     "usd_bvi": ("US dollar", "It's the local currency in the British Virgin Islands, so there's nothing to convert. Bring small bills for taxis and beach bars."),
-    "sxm": ("US dollars work everywhere", "Officially the guilder on the Dutch side and the euro on the French side, but prices are usually shown in US dollars. On the French side, if a card machine asks, pay in euros."),
+    "sxm": ("US dollars work everywhere", "Officially the Caribbean guilder on the Dutch side and the euro on the French side, but prices are usually in US dollars. On the French side, if a card machine asks, pay in euros."),
     "martinique": ("Euro (€)", "US dollars are rarely accepted. Use a card (pay in euros if asked) or bring a few euros for small purchases."),
     "ship": ("No cash needed on board", "Everything goes on your onboard account in US dollars, and tips are included."),
 }
@@ -532,8 +532,12 @@ def currency_note(d):
     for k in keys:
         title, more = CUR[k]
         parts.append(f"<b>{e(title)}</b> <span>{e(more)}</span>")
+    port = d.get("port") if d["kind"] in ("port", "embark") else None
+    pl = MONEY["places"].get(port) if port else None
+    if pl:
+        parts.append(f'<b>Cash</b> <span>{e(pl["cash_tip"])}</span>')
     return ('<div class="cur-note"><span class="cur-ic" aria-hidden="true">💵</span><div><p class="cur-h">Currency today</p>'
-            + "".join(f"<p>{p}</p>" for p in parts) + '<a href="#money">Money tips →</a></div></div>')
+            + "".join(f"<p>{p}</p>" for p in parts) + f'<a href="#money">Money tips →</a></div></div>')
 
 
 def render_day(d, i):
@@ -767,18 +771,96 @@ def view_budget():
     return "".join(h)
 
 
-def view_money():
-    """Currencies, cards, ATMs and cash. Port-by-port details are filled from tools/media/money.json when present."""
-    rows = [5, 10, 20, 50, 100]
-    h = ['<div class="view" id="v-money">']
-    h.append('<section><h2>Currencies on this trip</h2><p class="blurb">US dollars work almost everywhere except Martinique. '
-             'Two currencies are fixed to the dollar, so this table never changes. Small US bills are handy for tips and taxis.</p>'
-             '<div class="days fx"><div class="day head"><span>US dollars</span><span>EC dollars (XCD)</span><span>Barbados dollars (BBD)</span></div>')
-    for r in rows:
-        h.append(f'<div class="day"><span class="d">${r}</span><span class="num" data-k="EC dollars">EC${r*2.7:,.2f}</span><span class="num" data-k="Barbados dollars">BDS${r*2:,.0f}</span></div>')
-    h.append('</div></section></div>')
-    return "".join(h)
+MONEY = json.load(open(os.path.join(HERE, "media", "money.json")))  # researched Nov 2026, with sources
+PORT_ORDER = ["barbados", "stlucia", "montserrat", "antigua", "stkitts", "jvd", "sxm", "tortola", "martinique", "bequia", "grenada"]
+FLAG = {"barbados": ("Bds$", "Barbados dollar"), "jvd": ("US$", "US dollar"), "tortola": ("US$", "US dollar"),
+        "sxm": ("US$ / Cg / €", "US dollar, guilder, euro"), "martinique": ("€", "Euro")}
 
+
+def view_money():
+    g = MONEY["general"]
+    places = MONEY["places"]
+    h = ['<div class="view" id="v-money">']
+    # short version
+    h.append('<section><h2>The short version</h2><div class="callout shortv"><ul>'
+             '<li><b>Pay by card where you can</b>: a Visa or Mastercard credit card with <b>no foreign transaction fee</b>. Keep a second card as a backup.</li>'
+             '<li><b>If a card machine or ATM asks "pay in US dollars?", say no.</b> Choose the local currency and let your bank convert.</li>'
+             '<li><b>Bring about $700 in small US bills from home</b> for taxis, tips, beach chairs and the St. Lucia boat balance. US cash works everywhere except Martinique.</li>'
+             '<li><b>Two cash-only days:</b> Montserrat (Jan 12) and Jost Van Dyke (Jan 15) have no reliable ATM near the pier.</li>'
+             '<li><b>Martinique uses euros.</b> Get about €60 from the ship\'s Guest Services the day before, or from the Crédit Agricole ATM at the marina.</li>'
+             '</ul></div></section>')
+    # which card
+    h.append('<section><h2>Which card to use</h2><div class="cards3">'
+             '<article><p class="kk best">Best for most things</p><h3>Credit card: Visa or Mastercard, no foreign transaction fee</h3>'
+             '<p>Use it for restaurants, shops, tours and the onboard account. A card with no foreign transaction fee saves 1–3% on every purchase, '
+             'even ones charged in US dollars abroad. Check the card\'s terms or the back of the statement.</p></article>'
+             '<article><p class="kk">For cash only</p><h3>Debit card at a bank ATM</h3>'
+             '<p>Use it only to take out local cash. Never use a credit card at an ATM: that\'s a cash advance, with fees and interest from day one. '
+             'Expect a local ATM fee of about $2–5 plus your bank\'s foreign ATM fee, so take out fewer, larger amounts.</p></article>'
+             '<article><p class="kk">Backup</p><h3>American Express</h3>'
+             '<p>Taken at bigger hotels and some restaurants, but patchy on the islands and some places have stopped taking it. '
+             'Bring one, but don\'t rely on it as the only card.</p></article></div>'
+             '<p class="note">Before leaving, tell your banks you\'re traveling, and keep the backup card somewhere separate from your wallet.</p></section>')
+    # DCC
+    h.append('<section><h2>Pay in local currency, or let the shop convert to dollars?</h2>'
+             '<p class="blurb" style="max-width:72ch">Card machines and ATMs on these islands often offer to charge you in US dollars. It looks convenient, '
+             'but the shop\'s bank picks the exchange rate and adds a markup, often 3–12%. Your own card network converts at a better rate.</p>'
+             '<div class="dcc"><div class="dcc-screen"><p class="dcc-t">Pay in which currency?</p>'
+             '<p class="dcc-o good">EC$ 100.00 <span>✔ Choose this</span></p><p class="dcc-o bad">US$ 38.80 <span>✘ Decline</span></p></div>'
+             '<div><p><b>Always choose the local currency</b> (EC dollars, Barbados dollars, euros or guilders) and let your bank convert. '
+             'At an ATM, choose "decline conversion" or "without conversion".</p>'
+             '<p class="note">Example: an EC$100 lunch converts to about US$37 through your card. A machine offering "US$38.80" adds about $1.80, around 5%. (Illustrative numbers.)</p>'
+             '<p>In the British Virgin Islands the local currency is the US dollar, so no choice comes up. On EC-dollar islands, if a shop rings up a US-dollar price on the card machine, ask them to charge EC dollars instead.</p></div></div></section>')
+    # how much cash
+    h.append('<section><h2>How much cash to bring</h2><div class="callout tip"><p>'
+             '<b>About $700 in clean, untorn US bills</b>: roughly forty $1s, twenty $5s, fifteen $10s and twenty $20s. No $100s; torn or marked bills may be refused.</p></div>'
+             '<ul class="hl" style="margin-top:12px">'
+             '<li><b>$220</b> of that is for the St. Lucia speedboat balance ($200) and the guide\'s tip.</li>'
+             '<li>The rest covers about <b>$50–150 per port day</b> for taxis, beach chairs, drinks ashore and tips. See each island below.</li>'
+             '<li>Change on EC-dollar islands comes back in EC dollars. Keep it: it works on all six EC-dollar islands, but not in Barbados, the BVI, St. Martin or Martinique.</li>'
+             '<li><b>Running low?</b> The ATM at the Sint Maarten cruise pier (Jan 16) gives US dollars, and the BVI ATMs give US dollars too.</li>'
+             '<li><b>Euros:</b> about €60 for Martinique (Jan 20). Guest Services on the ship exchanges dollars for euros, or use the Crédit Agricole ATM at Pointe du Bout.</li>'
+             '<li>No need to buy EC dollars before you go.</li></ul>'
+             '<p class="note">These amounts are our suggestion based on the plan, not a rule.</p></section>')
+    # island by island
+    h.append('<section><h2>Island by island</h2><div class="isl-money">')
+    dates = {}
+    for d in trip.DAYS:
+        if d.get("port"):
+            dates.setdefault(d["port"], []).append(short_date(d["date"]))
+    for k in PORT_ORDER:
+        pl = places.get(k)
+        if not pl:
+            continue
+        isl = next((x for x in trip.ISLANDS if x["id"] == k), {"name": k})
+        sym = FLAG.get(k, ("EC$", "Eastern Caribbean dollar"))[0]
+        rows = [("Currency", pl["currency"]), ("US dollars", pl["usd"]), ("Cards", pl["cards"]), ("Nearest ATM", pl["atm"]), ("Cash to carry", pl["cash_tip"])]
+        h.append(f'<article class="im" id="money-{k}"><header><span class="sym">{e(sym)}</span><div><h3>{e(isl["name"])}</h3>'
+                 f'<small>{e(" & ".join(dates.get(k, [])))}</small></div></header><dl>'
+                 + "".join(f"<div><dt>{e(a)}</dt><dd>{e(b)}</dd></div>" for a, b in rows) + "</dl></article>")
+    h.append("</div></section>")
+    # converter + rates
+    h.append('<section><h2>Quick converter</h2><p class="blurb">These rates are fixed by each central bank, so they don\'t change. Shops that take US cash often give a little less, about EC$2.60–2.67 per dollar.</p>'
+             '<div class="conv"><label for="conv-usd">US dollars</label><input id="conv-usd" type="number" inputmode="decimal" min="0" step="1" value="20">'
+             '<div class="conv-out" aria-live="polite"><p><b data-rate="2.7">EC$54.00</b> Eastern Caribbean dollars</p><p><b data-rate="2">Bds$40.00</b> Barbados dollars</p>'
+             '<p><b data-rate="1.79">Cg35.80</b> Caribbean guilders (Sint Maarten)</p></div></div>'
+             '<div class="days fx" style="margin-top:14px"><div class="day head"><span>Currency</span><span>Fixed rate</span><span>Where</span></div>'
+             '<div class="day"><span class="d">EC dollar (XCD)</span><span class="num" data-k="Rate">EC$2.70 = US$1</span><span data-k="Where">St. Lucia, Montserrat, Antigua, St. Kitts & Nevis, Bequia, Grenada</span></div>'
+             '<div class="day"><span class="d">Barbados dollar (BBD)</span><span class="num" data-k="Rate">Bds$2 = US$1</span><span data-k="Where">Barbados</span></div>'
+             '<div class="day"><span class="d">Caribbean guilder (XCG)</span><span class="num" data-k="Rate">Cg1.79 = US$1</span><span data-k="Where">Sint Maarten (Dutch side). Replaced the Antillean guilder in 2025.</span></div>'
+             '<div class="day"><span class="d">US dollar (USD)</span><span class="num" data-k="Rate">—</span><span data-k="Where">British Virgin Islands (Jost Van Dyke, Tortola), and on board</span></div>'
+             '<div class="day"><span class="d">Euro (EUR)</span><span class="num" data-k="Rate">changes daily</span><span data-k="Where">Martinique, French St. Martin. Check your banking app.</span></div>'
+             '</div></section>')
+    # onboard
+    h.append(f'<section><h2>On the ship</h2><p style="max-width:72ch">{e(g["onboard"])}</p></section>')
+    src = g.get("sources", [])
+    for pl in places.values():
+        src += [u for u in pl.get("sources", []) if u not in src]
+    h.append('<p class="note">Researched in November 2026 from central banks, banks, Visa and port guides. ATM locations change, so confirm on the day. '
+             f'<details class="src"><summary>Sources ({len(src)})</summary><ul>' + "".join(
+                 f'<li><a href="{e(u)}" target="_blank" rel="noopener">{e(u.split("//")[-1][:70])}</a></li>' for u in src) + "</ul></details></p>")
+    h.append("</div>")
+    return "".join(h)
 
 # ---------------------------------------------------------------- calendar (.ics)
 SITE_URL = "https://spencertownley-sys.github.io/travel-plan-sites/cindy-paul-caribbean/"
