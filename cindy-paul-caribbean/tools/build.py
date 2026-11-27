@@ -476,7 +476,7 @@ def page():
 <title>Cindy &amp; Paul in the Caribbean</title>
 <meta name="description" content="Cindy and Paul's Exotic Caribbean In Depth cruise on Seabourn Ovation, January 2027: itinerary, day plans, maps, ship guide and planning to-do list.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 <style>{LEAFLET_CSS}</style><style>{CSS}</style></head><body>
 <div class="sea"><div class="sea-in"><p class="eyebrow">January 7 – 24, 2027</p><h1>Cindy &amp; Paul in the Caribbean</h1>
 <p class="lede">Cindy and Paul's fourteen nights on Seabourn Ovation, round trip from Barbados: "Exotic Caribbean In Depth," with eleven islands, two sea days and a night in Atlanta each way.</p>

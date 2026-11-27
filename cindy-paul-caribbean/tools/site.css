@@ -1,6 +1,6 @@
 /* One calm column like the Japan site; maps sit beside their legend on wide screens and stack on phones. */
 :root{--paper:#f7efdf;--card:#fffcf6;--ink:#13263a;--muted:#5a6573;--line:#e2d5bb;--sea-1:#0a5f74;--sea-2:#0f8f9e;--sea-3:#46c2bd;--glow:rgba(255,214,150,.55);--foam:rgba(255,255,255,.4);--on-sea:#ffffff;--on-sea-2:#e3f6f3;--tint-a:rgba(70,194,189,.13);--tint-b:rgba(255,206,140,.22);--sea:#0b6878;--coral:#d4512f;--sun:#b7791f;--ok:#2d7a4b;
---display:"Fraunces",Georgia,"Times New Roman",serif;--body:"Source Sans 3","Helvetica Neue",Arial,sans-serif}
+--display:"Playfair Display",Georgia,"Times New Roman",serif;--body:"Lato","Helvetica Neue",Arial,sans-serif}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--sea-1:#041d29;--sea-2:#073847;--sea-3:#0d5a63;--glow:rgba(190,215,255,.16);--foam:rgba(160,220,230,.16);--on-sea:#eef6f8;--on-sea-2:#b5d3d8;--tint-a:rgba(13,90,99,.22);--tint-b:rgba(190,215,255,.04);--paper:#0e1820;--card:#15222c;--ink:#e7eef3;--muted:#9eacb8;--line:#2a3a47;--sea:#62c3d2;--coral:#f07c5e;--sun:#e8b25a;--ok:#6cc08d}}
 :root[data-theme="dark"]{color-scheme:dark;--sea-1:#041d29;--sea-2:#073847;--sea-3:#0d5a63;--glow:rgba(190,215,255,.16);--foam:rgba(160,220,230,.16);--on-sea:#eef6f8;--on-sea-2:#b5d3d8;--tint-a:rgba(13,90,99,.22);--tint-b:rgba(190,215,255,.04);--paper:#0e1820;--card:#15222c;--ink:#e7eef3;--muted:#9eacb8;--line:#2a3a47;--sea:#62c3d2;--coral:#f07c5e;--sun:#e8b25a;--ok:#6cc08d}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
@@ -178,3 +178,6 @@ footer{padding-block:34px 50px;color:var(--muted);font-size:13.5px}
  .dayview{break-before:page}
  body{background:#fff;font-size:12pt}
 }
+
+/* Playfair defaults to old-style figures; use lining figures so dates and counts read evenly */
+h1,h2,h3,.stays b,.info b,.mk.lab .lab,.leaflet-popup-content b{font-variant-numeric:lining-nums}
