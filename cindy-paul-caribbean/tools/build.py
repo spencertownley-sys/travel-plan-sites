@@ -735,20 +735,21 @@ def view_budget():
     for name, why in trip.OPTIONAL:
         h.append(f'<div class="day"><span class="d">{e(name)}</span><span data-k="Why">{e(why)}</span><span class="num" data-k="About">optional</span><span></span></div>')
     h.append(f'<div class="day total"><span class="d">Allowance</span><span></span><span class="num">≈ {money(extras)}</span><span></span></div></div></section>')
-    # currency
+    h.append('<p class="note" style="margin-top:22px">Currencies, cards, ATMs and how much cash to bring are on the <a href="#money">Money tab</a>.</p>')
+    h.append("</div>")
+    return "".join(h)
+
+
+def view_money():
+    """Currencies, cards, ATMs and cash. Port-by-port details are filled from tools/media/money.json when present."""
     rows = [5, 10, 20, 50, 100]
-    h.append('<section><h2>Money ashore</h2><p class="blurb">US dollars work almost everywhere except Martinique. '
+    h = ['<div class="view" id="v-money">']
+    h.append('<section><h2>Currencies on this trip</h2><p class="blurb">US dollars work almost everywhere except Martinique. '
              'Two currencies are fixed to the dollar, so this table never changes. Small US bills are handy for tips and taxis.</p>'
              '<div class="days fx"><div class="day head"><span>US dollars</span><span>EC dollars (XCD)</span><span>Barbados dollars (BBD)</span></div>')
     for r in rows:
         h.append(f'<div class="day"><span class="d">${r}</span><span class="num" data-k="EC dollars">EC${r*2.7:,.2f}</span><span class="num" data-k="Barbados dollars">BDS${r*2:,.0f}</span></div>')
-    h.append('</div><ul class="hl" style="margin-top:12px">'
-             '<li><b>EC dollar</b> (St. Lucia, Montserrat, Antigua, St. Kitts & Nevis, Bequia, Grenada): fixed at 2.70 per US$1. Change often comes back in EC dollars.</li>'
-             '<li><b>Barbados dollar</b>: fixed at 2 per US$1.</li>'
-             '<li><b>US dollar</b>: the currency in the British Virgin Islands; widely used in Sint Maarten.</li>'
-             '<li><b>Euro</b> (Martinique, French St. Martin): the rate moves daily, so check a banking app. Cards work well; bring a few euros for small purchases.</li>'
-             '</ul></section>')
-    h.append("</div>")
+    h.append('</div></section></div>')
     return "".join(h)
 
 
@@ -864,7 +865,7 @@ THEME_BOOT = ("(function(){try{var t=localStorage.getItem('cp-theme');"
 
 
 def page():
-    tabs = [("itinerary", "Itinerary"), ("days", "Day by day"), ("maps", "Maps"), ("ship", "The ship"), ("budget", "Budget"), ("todo", "To do")]
+    tabs = [("itinerary", "Itinerary"), ("days", "Day by day"), ("maps", "Maps"), ("ship", "The ship"), ("money", "Money"), ("budget", "Budget"), ("todo", "To do")]
     return f"""<!DOCTYPE html>
 <html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Cindy &amp; Paul in the Caribbean</title>
@@ -881,7 +882,7 @@ def page():
 <div class="today" id="today" hidden></div>
 <p class="links"><a class="sheet" href="{trip.SHEET_URL}">Open the planning sheet in Google Sheets</a><a class="sheet pdfdl" href="trip.pdf" download>Download the trip as a PDF</a></p></div></div>
 <header><nav class="tabs" aria-label="Sections">{"".join(f'<a href="#{k}" data-tab="{k}">{v}</a>' for k, v in tabs)}</nav></header>
-<main>{view_itinerary()}{view_days()}{view_maps()}{view_ship()}{view_budget()}{view_todo()}</main>
+<main>{view_itinerary()}{view_days()}{view_maps()}{view_ship()}{view_money()}{view_budget()}{view_todo()}</main>
 <footer>Planning draft. {e(TODAY_NOTE)}; times, prices and port details may change. Port times are the ship's local time (Atlantic, UTC−4). Weather averages and forecasts from <a href="https://open-meteo.com/">Open-Meteo</a>.</footer>
 <script src="vendor/leaflet.js"></script>
 <script>window.TRIP_MAP = {json.dumps(live_map_data(), ensure_ascii=False)};
